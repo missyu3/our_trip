@@ -1,0 +1,19 @@
+ja:
+  activemodel:
+    models:
+      user_form: ユーザー
+    attributes:
+      user_form:
+        name_or_email: ユーザー名称 / メール
+  activerecord:    
+    models:
+      user: ユーザー
+      user_detail: ユーザー詳細
+    attributes:
+      user:
+        name: 名称
+        password: パスワード
+        password_confirmation: 確認用パスワード
+      user_detail:
+        email: メールアドレス
+        icon: アイコン
