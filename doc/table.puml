@@ -1,0 +1,179 @@
+@startuml EntityRelationship
+entity "users" {
+    + id [PK]
+    ==
+    name:string
+    email:string
+    encrypted_password:string
+    reset_password_token:string
+    reset_password_sent_at:datetime
+    remember_created_at:datetime
+    password_digest:string
+    created_at
+    updated_at
+}
+
+entity "participants" {
+    + id [PK]
+    ==
+    # plan_id [FK(plans.id)]
+    # user_id [FK(users.id)]
+    created_at
+    updated_at
+}
+
+entity "plans" {
+    + id [PK]
+    ==
+    name:string
+    content:text
+    # host_users [FK(users.id)]
+    created_at
+    updated_at
+}
+
+entity "schedules" {
+    + id [PK]
+    ==
+    # plan_id [FK(plans.id)]
+    sort:integer
+    # plan_item_id [FK(plan_items.id)]
+    start_time:datetime
+    created_at
+    updated_at
+}
+
+
+entity "plan_items" {
+    + id [PK]
+    ==
+    # plan_id [FK(plans.id)]
+    title:string
+    category:integer
+    content:text
+    schedule_display:boolean
+    # user_id [FK(users.id)]
+    created_at
+    updated_at
+}
+
+entity "labels" {
+    + id [PK]
+    ==
+    # plan_id [FK(plans.id)]
+    name:string
+    created_at
+    updated_at
+}
+
+entity "plan_item_to_labels" {
+    + id [PK]
+    ==
+    # plan_item_id [FK(plan_items.id)]
+    # label_id [FK(labels.id)]
+    created_at
+    updated_at
+}
+
+entity "plan_item_references" {
+    + id [PK]
+    ==
+    # plan_item_id [FK(plan_items.id)]
+    url:text
+    created_at
+    updated_at
+}
+
+entity "map_points" {
+    + id [PK]
+    ==
+    # plan_item_id [FK(plan_items.id)]
+    lat:float
+    lng:float
+    created_at
+    updated_at
+}
+
+entity "check_lists" {
+    + id [PK]
+    ==
+    # plan_id [FK(plans.id)]
+    title:string
+    created_at
+    updated_at
+}
+
+entity "check_list_items" {
+    + id [PK] 
+    ==
+    # check_list_id [FK(check_lists.id)]
+    sort:integer
+    item:text
+    created_at
+    updated_at
+}
+
+entity "user_check_states" {
+    + id [PK]
+    ==
+    # user_id [FK(users.id)]
+    # check_list_item_id [FK(check_list_items.id)]
+    checked:boolean
+    created_at
+    updated_at
+}
+
+entity "expenses" {
+    + id [PK]
+    ==
+    # plan_id [FK(plans.id)]
+    title:string
+    price:decimal
+    # user_id [FK(users.id)]
+    created_at
+    updated_at
+}
+
+entity "plan_item_comments" {
+    + id [PK]
+    ==
+    # plan_item_id [FK(plan_items.id)]
+    # user_id [FK(users.id)]
+    created_at
+    updated_at
+}
+
+entity "comments" {
+    + id [PK]
+    ==
+    # plan_item_comment_id [FK(plan_item_comments.id)]
+    comment:text
+    created_at
+    updated_at
+}
+
+
+users --right--o{ plans
+users --o{ participants
+users --o| user_check_states
+users --o| plan_items
+users --o| expenses
+users --o{ plan_item_comments
+plans --o{ schedules
+plans --o| expenses
+plans --o| plan_items
+plans --o{ labels
+plans --|{ participants
+plans --o{ check_lists
+schedules ||--|| plan_items
+check_lists --o{ check_list_items
+check_list_items ||--|| user_check_states
+plan_items --o{ plan_item_comments
+plan_items --o{ plan_item_references
+plan_items --o{ map_points
+plan_items --o{ plan_item_to_labels
+labels --|{ plan_item_to_labels
+plan_item_comments --o{ comments
+
+@enduml
+
