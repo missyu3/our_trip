@@ -16,6 +16,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'letter_opener_web'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
