@@ -7,16 +7,5 @@ ja:
     user_edit: 編集
   button:
     login: ログイン
-    create_user: 新しいアカウントの作成
-  model:
-    name: ユーザー名称
-    email: メールアドレス
-    icon: アイコン
-    password: パスワード
-    password_digest: 確認用パスワード
-  message:
-    please_input_name_or_email: ユーザ名称かメールアドレスを入力してください
-    failed_login: ログインに失敗しました
-    logout: ログアウトしました
-
-
+    logout: ログアウト
+    sign_in: 新規登録
