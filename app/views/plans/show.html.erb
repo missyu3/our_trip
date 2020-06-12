@@ -1,0 +1,8 @@
+  <%= I18n.t("activerecord.attributes.plan.name") %>
+  <%= @plan.name %>
+  <%= I18n.t("activerecord.attributes.plan.content") %>
+  <%= @plan.content %>
+  <%= I18n.t("activerecord.attributes.plan.updated_at") %>
+  <%= format_datetime(@plan.updated_at) %>
+  <%= link_to I18n.t("button.edit") , edit_plan_path(@plan) %>
+  <%= link_to I18n.t("button.destroy")  , plan_path(@plan) , method: :destroy %>

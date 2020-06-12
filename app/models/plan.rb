@@ -3,4 +3,6 @@ class Plan < ApplicationRecord
   
   validates :name, presence: true
 
+  scope :updated_before, -> { order(updated_at: :desc) }
+
 end
