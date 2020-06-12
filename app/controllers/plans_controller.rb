@@ -29,8 +29,9 @@ class PlansController < ApplicationController
 
   def show; end
 
-  def delete
+  def destroy
     @plan.destroy
+    redirect_to plans_path
   end
 
   private
