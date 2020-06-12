@@ -18,6 +18,8 @@ group :development, :test do
   gem 'letter_opener_web'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'capybara'
+
 end
 
 group :development do
