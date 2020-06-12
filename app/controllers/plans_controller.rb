@@ -1,4 +1,6 @@
 class PlansController < ApplicationController
+  before_action :find_params, only: [:edit, :update, :show, :destroy]
+
   def new
     @plan = Plan.new
   end
@@ -11,11 +13,32 @@ class PlansController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @plan.update(plan_params)
+      redirect_to plan_path(@plan)
+    else
+      render :edit
+    end
+  end
+
   def index
-    @plan = Plan.all
+    @plan = Plan.all.updated_before
+  end
+
+  def show; end
+
+  def destroy
+    @plan.destroy
+    redirect_to plans_path
   end
 
   private
+
+  def find_params
+    @plan = Plan.find(params[:id])
+  end
 
   def plan_params
     params.require(:plan).permit(:name, :content)

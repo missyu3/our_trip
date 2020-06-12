@@ -1,1 +1,11 @@
-Plan Test
+<h1>一覧</h1>
+<% @plan.each do |plan| %>
+  <%= I18n.t("activerecord.attributes.plan.name") %>
+  <%= link_to plan.name , plan_path(plan.id) %>
+  <%= I18n.t("activerecord.attributes.plan.content") %>
+  <%= plan.content %>
+  <%= I18n.t("activerecord.attributes.plan.updated_at") %>
+  <%= format_datetime(plan.updated_at) %>
+  <%= link_to I18n.t("button.edit") , edit_plan_path(plan.id) , id: "edit_#{plan.id}" %>
+  <%= link_to I18n.t("button.destroy")  , plan_path(plan.id) , method: :delete , id: "delete_#{plan.id}" %>
+<% end %>
