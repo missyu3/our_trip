@@ -1,0 +1,56 @@
+header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+}
+
+body {
+  margin-top: 90px;
+}
+
+ul {
+  list-style: none;
+}
+
+footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 40px;
+  background-color: #666666;
+  color: #eeeeee;
+  text-align: center;
+  line-height: 40px;
+}
+
+.message_box {
+  width: 80%;
+  padding: 0.5em 1em;
+  margin-left: auto;
+  margin-right: auto;
+  border: double 5px #4ec4d3;
+  text-align: center;
+}
+
+.error_message_box {
+  width: 80%;
+  padding: 0.5em 1em;
+  margin-left: auto;
+  margin-right: auto;
+  border: double 5px #d34e4e;
+  text-align: center;
+}
+
+.center_form {
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  padding: 2rem;
+  background-color: linen;
+  text-align: center;
+}
