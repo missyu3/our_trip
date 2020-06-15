@@ -4,18 +4,39 @@
     <title>OurTrip</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <header>
+    <nav class="navbar">
+      <a class="navbar-brand" href="#">
+        <%= I18n.t("title.app") %>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarEexample7">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-expanded="false">
+              <%= I18n.t("button.menu") %> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <% if user_signed_in? %>
+                <li role="presentation"><%= link_to I18n.t("button.logout"), destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li role="presentation"><%= link_to I18n.t("button.plan_index"), plans_path %></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><%= link_to I18n.t("button.sign_in"), new_user_registration_path %></li>
+                <li role="presentation"><%= link_to I18n.t("button.login"), new_user_session_path %></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
   <body> 
-    <% if user_signed_in? %>
-      <%= link_to I18n.t("button.logout"), destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to I18n.t("button.sign_in"), new_user_registration_path %>
-      <%= link_to I18n.t("button.login"), new_user_session_path %>
-    <% end %>
-    <%= yield %>
+    <div class='center_form'>
+      <%= yield %>
+    </div>
   </body>
+  <footer>©️missyu3 2020</footer>
 </html>
