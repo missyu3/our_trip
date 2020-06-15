@@ -1,0 +1,20 @@
+<%= form_with(model: [ plan , plan_item ] , local: true) do |f| %>
+  <div class="container">
+    <%= f.hidden_field :plan_id, value: plan.id %>
+    <div class="row">
+      <%= f.label :title %>
+      <%= f.text_field :title, { class: "form-control" }%>
+    </div>
+    <div class="row">
+      <%= f.label :category %> 
+      <%= f.select :category , PlanItem.categories.map{ |key, value| [I18n.t("enum.categories.#{key}"), value]  } , {} , { class: "form-control" } %>
+    </div>
+    <div class="row">
+      <%= f.label :content %> 
+      <%= f.text_area :content, { class: "form-control" } %>
+    </div>
+    <div class="row">
+      <%= f.submit nil, { class: "button_base button_info" } %>
+    </div>
+  </div>
+<% end %>

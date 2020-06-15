@@ -5,7 +5,9 @@ ja:
     app: OurTrip
     session_new: ログイン
     user_new: サインイン
-    user_edit: 編集
+    user_edit: ユーザー編集
+    new: 新規
+    edit: 編集
   button:
     menu: メニュー
     login: ログイン
@@ -16,3 +18,10 @@ ja:
     plan_index: 旅行計画一覧
   message:
     welcome_user: "ようこそ{name}さん"
+  enum:
+    categories:
+      nothing: ""
+      move: 移動
+      activity: アクティビティ
+      meal: 食事
+      lodging: 宿泊

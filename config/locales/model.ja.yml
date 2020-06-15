@@ -9,3 +9,8 @@ ja:
         content: 概要
         created_at: 作成日時
         updated_at: 更新日時
+      plan_item:
+        title: タイトル
+        category: カテゴリー
+        content: 概要
+        user_id: 作成者
