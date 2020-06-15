@@ -15,6 +15,6 @@
   <%= item.title %>
   <%= item.category %>
   <%= item.content %>
-  <%= link_to I18n.t("button.edit") , edit_plan_plan_item_path(id: item.id , plan_id: @plan.id) , class: "button_base button_info" %>
-  <%= link_to I18n.t("button.destroy")  , plan_plan_item_path(id: item.id , plan_id: @plan.id) , method: :delete , class: "button_base button_warning"%>
+  <%= link_to I18n.t("button.edit") , edit_plan_plan_item_path(id: item.id , plan_id: @plan.id) , class: "edit_plan_item#{item.id} button_base button_info" %>
+  <%= link_to I18n.t("button.destroy")  , plan_plan_item_path(id: item.id , plan_id: @plan.id) , method: :delete , class: "button_base button_warning destroy_plan_item#{item.id}"%>
 <% end %>

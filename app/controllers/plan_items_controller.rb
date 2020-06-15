@@ -22,8 +22,8 @@ class PlanItemsController < ApplicationController
   end
 
   def update
-    if @plan_item.update(plan_params)
-      redirect_to plan_item_path(@plan_item)
+    if @plan_item.update(plan_item_params)
+      redirect_to plan_plan_item_path(id: @plan_item.id)
     else
       render :edit
     end
