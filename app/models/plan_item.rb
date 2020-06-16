@@ -1,6 +1,7 @@
 class PlanItem < ApplicationRecord
   belongs_to :plan
   belongs_to :user
+  has_one :schedule
 
   enum categories: { nothing: 0, move: 1, activity: 2, meal: 3, lodging: 4 }
 
