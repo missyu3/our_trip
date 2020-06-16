@@ -1,3 +1,4 @@
+<h1><%= I18n.t("title.plan_title") %></h1>
 <%= I18n.t("activerecord.attributes.plan.name") %>
 <%= @plan.name %>
 <%= I18n.t("activerecord.attributes.plan.content") %>
@@ -6,5 +7,6 @@
 <%= I18n.l(@plan.updated_at, format: :long) %>
 <% if @plan.user == current_user %>
   <%= link_to I18n.t("button.edit") , edit_plan_path(@plan) , class: "button_base button_info" %>
-  <%= link_to I18n.t("button.destroy")  , plan_path(@plan) , method: :destroy , class: "button_base button_warning"%>
+  <%= link_to I18n.t("button.destroy")  , plan_path(@plan) , method: :delete , class: "button_base button_warning destroy_plan"%>
 <% end %>
+  <%= link_to I18n.t("button.plan_item_index") , plan_plan_items_path(@plan) , class: "button_base button_info" %>

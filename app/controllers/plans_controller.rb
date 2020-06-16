@@ -24,7 +24,7 @@ class PlansController < ApplicationController
   end
 
   def index
-    @plan = Plan.all.updated_before
+    @plan = Plan.all.order_by_updated_before
   end
 
   def show; end

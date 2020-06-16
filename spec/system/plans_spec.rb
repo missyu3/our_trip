@@ -42,11 +42,11 @@ RSpec.describe "plan", type: :system do
         plan1
         plan2
         plan3
-        visit plans_path
+        visit plan_path(plan1.id)
       end
       it '削除が成功すること' do
-        click_on "delete_#{plan2.id}"
-        expect(page).to_not have_content "石川"
+        find(".destroy_plan").click
+        expect(page).to_not have_content "北海道"
         expect(page).to have_content "沖縄"
       end
     end

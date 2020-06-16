@@ -1,0 +1,18 @@
+<h1>行きたい場所一覧</h1>
+  <%= link_to I18n.t("button.plan_item_new") , new_plan_plan_item_path(@plan.id) , class: "button_base button_info" %>
+<div class="container">
+  <div class="row">
+    <% @plan_item.each do |item| %>
+      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+        <div class="shadow card_margin card">
+        <%= link_to plan_plan_item_path(id: item.id , plan_id: item.plan_id), class: "card_link show" do %>
+          <div class="card-content">
+            <h1 class="card-title"><%= item.title %></h1>
+            <p class="card-text"><%= item.content %></p>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
