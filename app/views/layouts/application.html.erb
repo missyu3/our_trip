@@ -9,9 +9,7 @@
   </head>
   <header>
     <nav class="navbar">
-      <a  href="#">
-        <%= link_to I18n.t("title.app"), plans_path, class: "navbar-brand"%>
-      </a>
+      <%= link_to I18n.t("title.app"), plans_path, class: "navbar-brand"%>
       <div class="collapse navbar-collapse" id="navbarEexample7">
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
@@ -30,6 +28,11 @@
             </ul>
           </li>
         </ul>
+        <% if user_signed_in? %>
+          <div class="navbar-text navbar-right">
+            <%= current_user.email %>
+          </div>
+        <% end %>
       </div>
     </nav>
   </header>
