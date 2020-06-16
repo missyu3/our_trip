@@ -7,5 +7,4 @@
 <% if @plan_item.plan.user == current_user || @plan_item.user == current_user %>
   <%= link_to I18n.t("button.edit") , edit_plan_plan_item_path(@plan_item.id) , class: "button_base button_info" %>
   <%= link_to I18n.t("button.destroy")  , plan_plan_item_path(@plan_item.id) , method: :delete , class: "button_base button_warning"%>
-  <%= link_to "Item" , new_plan_plan_item_path(@plan_item.id) , class: "button_base button_info" %>
 <% end %>
