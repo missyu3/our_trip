@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'plans#index'
   resources :plans do
     resources :plan_items
+    resources :schedules, only: [:index , :create]
   end
   devise_for :users, :controllers => {
   :registrations => 'users/registrations',
