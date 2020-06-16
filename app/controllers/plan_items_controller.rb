@@ -32,7 +32,8 @@ class PlanItemsController < ApplicationController
   def show; end
 
   def index
-    @plan_item = PlanItem.all.order_by_updated_before
+    @plan = Plan.find(params[:plan_id]) 
+    @plan_item = @plan.plan_items.order_by_updated_before
   end
 
   def destroy

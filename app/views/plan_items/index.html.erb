@@ -1,4 +1,5 @@
 <h1>行きたい場所一覧</h1>
+  <%= link_to I18n.t("button.plan_item_new") , new_plan_plan_item_path(@plan.id) , class: "button_base button_info" %>
 <div class="container">
   <div class="row">
     <% @plan_item.each do |item| %>
