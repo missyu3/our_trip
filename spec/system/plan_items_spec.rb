@@ -29,16 +29,20 @@ RSpec.describe "plan_item", type: :system do
       before do
         plan
         plan_item
-        visit plan_path(plan.id)
-        find(".edit_plan_item#{plan_item.id}").click 
+        visit plan_plan_items_path(plan_id: plan.id)
+        click_on "函館"
+        click_on "編集"
         fill_in "タイトル", with: "東京"
         select "移動", from: "カテゴリー"
         fill_in "概要", with: "東京メトロ"
         click_button '更新する'
       end
       it '作成が成功すること' do
+        expect(page).to have_content "行きたい場所一覧"
         expect(page).to have_content "東京"
         expect(page).to have_content "東京メトロ"
+        expect(page).to_not have_content "函館"
+        expect(page).to_not have_content "お寿司、海胆"
       end
     end
     context '削除' do
@@ -46,12 +50,14 @@ RSpec.describe "plan_item", type: :system do
         plan
         plan_item
         plan_item2
-        visit plan_path(plan.id)
-        find(".destroy_plan_item#{plan_item.id}").click 
+        visit plan_plan_items_path(plan_id: plan.id)
+        click_on "函館"
+        click_on "削除"
       end
       it '作成が成功すること' do
-        expect(page).to_not have_content "札幌"
-        expect(page).to_not have_content "味噌ラーメン"
+        expect(page).to have_content "行きたい場所一覧"
+        expect(page).to_not have_content "函館"
+        expect(page).to_not have_content "お寿司、海胆"
         expect(page).to have_content "沖縄"
         expect(page).to have_content "豚足"
       end

@@ -23,7 +23,7 @@ class PlanItemsController < ApplicationController
 
   def update
     if @plan_item.update(plan_item_params)
-      redirect_to plan_plan_item_path(id: @plan_item.id)
+      redirect_to plan_plan_items_path(plan_id: @plan_item.plan_id)
     else
       render :edit
     end
@@ -31,9 +31,13 @@ class PlanItemsController < ApplicationController
 
   def show; end
 
+  def index
+    @plan_item = PlanItem.all.order_by_updated_before
+  end
+
   def destroy
     @plan_item.destroy
-    redirect_to plan_path(@plan_item.plan_id)
+    redirect_to plan_plan_items_path(plan_id: @plan_item.plan_id)
   end
 
   private

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'plans#index'
   resources :plans do
-    resources :plan_items, except: :index
+    resources :plan_items
   end
   devise_for :users, :controllers => {
   :registrations => 'users/registrations',

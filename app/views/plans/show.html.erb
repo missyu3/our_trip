@@ -1,4 +1,4 @@
-<h1>旅行計画</h1>
+<h1><%= I18n.t("title.plan_title") %></h1>
 <%= I18n.t("activerecord.attributes.plan.name") %>
 <%= @plan.name %>
 <%= I18n.t("activerecord.attributes.plan.content") %>
@@ -8,13 +8,6 @@
 <% if @plan.user == current_user %>
   <%= link_to I18n.t("button.edit") , edit_plan_path(@plan) , class: "button_base button_info" %>
   <%= link_to I18n.t("button.destroy")  , plan_path(@plan) , method: :delete , class: "button_base button_warning destroy_plan"%>
-  <%= link_to "Item" , new_plan_plan_item_path(@plan.id) , class: "button_base button_info" %>
+  <%= link_to I18n.t("button.plan_item_new") , new_plan_plan_item_path(@plan.id) , class: "button_base button_info" %>
 <% end %>
-<% @plan.plan_items.each do |item| %>
-  <%= link_to item.title, plan_plan_item_path(id: item.id , plan_id: @plan.id) %>
-  <%= item.title %>
-  <%= item.category %>
-  <%= item.content %>
-  <%= link_to I18n.t("button.edit") , edit_plan_plan_item_path(id: item.id , plan_id: @plan.id) , class: "edit_plan_item#{item.id} button_base button_info" %>
-  <%= link_to I18n.t("button.destroy")  , plan_plan_item_path(id: item.id , plan_id: @plan.id) , method: :delete , class: "button_base button_warning destroy_plan_item#{item.id}"%>
-<% end %>
+  <%= link_to I18n.t("button.plan_item_index") , plan_plan_items_path(@plan) , class: "button_base button_info" %>

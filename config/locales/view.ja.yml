@@ -8,14 +8,18 @@ ja:
     user_edit: ユーザー編集
     new: 新規
     edit: 編集
+    plan_title: 旅行計画
+    plan_item_title: 旅行項目
   button:
     menu: メニュー
     login: ログイン
     logout: ログアウト
     sign_in: 新規登録
-    edit: 更新
+    edit: 編集
     destroy: 削除
     plan_index: 旅行計画一覧
+    plan_item_index: 旅行項目一覧
+    plan_item_new: 旅行項目追加
   message:
     welcome_user: "ようこそ{name}さん"
   enum:
