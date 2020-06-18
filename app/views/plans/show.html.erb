@@ -8,5 +8,6 @@
 <% if @plan.user == current_user %>
   <%= link_to I18n.t("button.edit") , edit_plan_path(@plan) , class: "button_base button_info" %>
   <%= link_to I18n.t("button.destroy")  , plan_path(@plan) , method: :delete , class: "button_base button_warning destroy_plan"%>
+  <%= link_to "スケジュール作成" , plan_schedules_path(@plan) , class: "button_base button_info" %>
 <% end %>
   <%= link_to I18n.t("button.plan_item_index") , plan_plan_items_path(@plan) , class: "button_base button_info" %>

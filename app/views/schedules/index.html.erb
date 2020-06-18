@@ -1,0 +1,33 @@
+<h1>スケジュール作成</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 ">
+    <div id="sortable_list_A" class="list-group col">
+      <% @plan.schedule.each do |item| %>
+          <div class="shadow card_margin card_mini list-group-item">
+            <div class="card-content">
+              <%= tag.div item.id , class: 'hide item_id' %>
+                <h1 class="card-title"><%= item.plan_item.title %></h1>
+                <p class="card-text"><%= item.plan_item.content %></p>
+                <%= link_to "詳細" ,plan_plan_item_path(id: item.plan_item.id , plan_id: item.plan_id) %>
+              </div>
+            </div>
+      <% end %>
+    </div>
+    </div>
+    <div class="col-xs-6 ">
+    <div id="sortable_list_B" class="list-group col">
+      <% @plan_item.each_with_index do |item,i| %>
+          <div class="shadow card_margin card_mini list-group-item">
+            <div class="card-content">
+              <%= tag.div item.id , class: 'hide item_id' %>
+              <h1 class="card-title"><%= item.title %></h1>
+              <p class="card-text"><%= item.content %></p>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>
