@@ -9,5 +9,6 @@ class PlanItem < ApplicationRecord
   validates :content , presence: true
 
   scope :order_by_updated_before, -> { order(updated_at: :desc) }
+  scope :where_not_include_schedule, -> (schedule){ where.not(id: schedule.to_a.map { |item| item[:plan_item_id] }) }
 
 end

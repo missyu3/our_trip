@@ -1,3 +1,13 @@
-// Place all the styles related to the schedules controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#sortable_list_A{
+  border: double 5px #4ec4d3;
+  height: 600px;
+  width: 250px;
+  overflow: auto;
+}
+
+#sortable_list_B{
+  border: double 5px #4ec4d3;
+  height: 600px;
+  width: 250px;
+  overflow: auto;
+}

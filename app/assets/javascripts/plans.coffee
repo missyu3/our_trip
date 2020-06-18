@@ -10,17 +10,17 @@ $ ->
     animation: 150,
     onUpdate: (evt) ->
         $.ajax
-          url: $("#parent_id").val() + '/sort'
+          url: "schedules" + '/sort'
           type: 'patch'
           data: { from: evt.oldIndex, to: evt.newIndex },
     onAdd: (evt) ->
         $.ajax
-          url: $("#parent_id").val() + '/add'
+          url: "schedules" + '/add'
           type: 'patch'
-          data: { to: evt.newIndex, evt_id: evt.target.getElementsByClassName('item_id')[evt.target.getElementsByClassName('item_id').length - 1].textContent},
+          data: { to: evt.newIndex, evt_id: evt.target.getElementsByClassName('item_id')[evt.newIndex].textContent},
     onRemove: (evt) ->
         $.ajax
-          url: $("#parent_id").val() + '/remove'
+          url: "schedules" + '/remove'
           type: 'delete'
           data: { from: evt.oldIndex },
       })

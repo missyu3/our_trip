@@ -1,5 +1,4 @@
 class PlansController < ApplicationController
-  protect_from_forgery
   before_action :find_params, only: [:edit, :update, :show, :destroy]
 
   def new

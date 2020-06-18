@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   root 'plans#index'
-  patch 'plans/:id/sort', to: 'plans#sort'
-  patch 'plans/:id/add', to: 'plans#add'
-  delete 'plans/:id/remove', to: 'plans#remove'
   resources :plans do
     resources :plan_items
-    resources :schedules, only: [:index , :create]
+    resources :schedules, only: [:index]  do 
+      collection do
+        patch :sort
+        patch :add
+        delete :remove
+      end
+    end
   end
   devise_for :users, :controllers => {
   :registrations => 'users/registrations',

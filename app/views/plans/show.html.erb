@@ -8,38 +8,6 @@
 <% if @plan.user == current_user %>
   <%= link_to I18n.t("button.edit") , edit_plan_path(@plan) , class: "button_base button_info" %>
   <%= link_to I18n.t("button.destroy")  , plan_path(@plan) , method: :delete , class: "button_base button_warning destroy_plan"%>
+  <%= link_to "スケジュール作成" , plan_schedules_path(@plan) , class: "button_base button_info" %>
 <% end %>
   <%= link_to I18n.t("button.plan_item_index") , plan_plan_items_path(@plan) , class: "button_base button_info" %>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6 ">
-    <div id="sortable_list_A" class="list-group col">
-      <% @plan.schedule.each do |item| %>
-          <div class="shadow card_margin card list-group-item">
-            <%= link_to "詳細" ,plan_plan_item_path(id: item.plan_item.id , plan_id: item.plan_id) %>
-            <div class="card-content">
-              <%= tag.div item.id , class: 'hide item_id' %>
-              <h1 class="card-title"><%= item.plan_item.title %></h1>
-              <p class="card-text"><%= item.plan_item.content %></p>
-              </div>
-            </div>
-      <% end %>
-    </div>
-    </div>
-    <div class="col-xs-6 ">
-    <div id="sortable_list_B" class="list-group col">
-      <% @plan.plan_items.each_with_index do |item,i| %>
-          <div class="shadow card_margin card list-group-item">
-            <div class="card-content">
-              <%= tag.div item.id , class: 'hide item_id' %>
-              <h1 class="card-title"><%= item.title %></h1>
-              <p class="card-text"><%= item.content %></p>
-            </div>
-          </div>
-      <% end %>
-    </div>
-    </div>
-  </div>
-</div>
-<%= hidden_field_tag :parent_id, @plan.id %>
