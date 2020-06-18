@@ -35,3 +35,4 @@ end
 
 gem 'devise'
 gem 'rails-i18n', '~> 5.1'
+gem 'acts_as_list'
