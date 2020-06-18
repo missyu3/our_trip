@@ -1,4 +1,5 @@
 class PlansController < ApplicationController
+  protect_from_forgery
   before_action :find_params, only: [:edit, :update, :show, :destroy]
 
   def new
@@ -32,6 +33,29 @@ class PlansController < ApplicationController
   def destroy
     @plan.destroy
     redirect_to plans_path
+  end
+
+  def sort
+    @plan = Plan.find(params[:id])
+    #fromはドラッグ前の位置、toはドラッグ後の位置
+    schedule = @plan.schedule[params[:from].to_i]
+    schedule.insert_at(params[:to].to_i + 1)
+  end
+
+  def add
+    @plan = Plan.find(params[:id])
+    position = params[:to].to_i + 1
+    if @plan.schedule.create(plan_item_id: params[:evt_id].to_i, position: position)
+
+    else
+binding.irb
+    end
+  end
+
+  def remove
+    @plan = Plan.find(params[:id])
+    schedule = @plan.schedule[params[:from].to_i]
+    schedule.destroy
   end
 
   private
