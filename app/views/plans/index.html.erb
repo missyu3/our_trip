@@ -1,18 +1,20 @@
 <h1>一覧</h1>
 <div class="container">
-  <div class="row">
-    <% @plan.each do |plan| %>
-      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
-        <div class="shadow card_margin card">
-        <%= link_to plan_path(plan), class: "card_link" do %>
-          <%= image_tag 'travel.jpg', class: "card-img" %>
-          <div class="card-content">
-            <h1 class="card-title"><%= plan.name %></h1>
-            <p class="card-text"><%= plan.content %></p>
+  <div class="frame">
+    <div class="row">
+      <% @plan.each do |plan| %>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+          <div class="shadow card_margin card">
+            <%= link_to plan_path(plan), class: "card_link" do %>
+              <%= image_tag 'travel.jpg', class: "card-img" %>
+              <div class="card-content">
+                <h1 class="card-title"><%= plan.name %></h1>
+                <p class="card-text"><%= plan.content %></p>
+              </div>
+            <% end %>
           </div>
-        <% end %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

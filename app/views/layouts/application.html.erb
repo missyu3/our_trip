@@ -17,12 +17,12 @@
               <%= I18n.t("button.menu") %> <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
+              <li role="presentation"><%= link_to I18n.t("button.plan_index"), plans_path %></li>
+              <li role="presentation" class="divider"></li>
               <% if user_signed_in? %>
                 <li role="presentation"><%= link_to I18n.t("button.my_page"), user_path(current_user.id) %></li>
                 <li role="presentation"><%= link_to I18n.t("button.logout"), destroy_user_session_path, method: :delete %></li>
               <% else %>
-                <li role="presentation"><%= link_to I18n.t("button.plan_index"), plans_path %></li>
-                <li role="presentation" class="divider"></li>
                 <li role="presentation"><%= link_to I18n.t("button.sign_in"), new_user_registration_path %></li>
                 <li role="presentation"><%= link_to I18n.t("button.login"), new_user_session_path %></li>
               <% end %>
