@@ -8,9 +8,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <header>
-    <nav class="navbar">
+    <nav class="nav">
       <%= link_to I18n.t("title.app"), plans_path, class: "navbar-brand"%>
-      <div class="collapse navbar-collapse" id="navbarEexample7">
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-expanded="false">
@@ -34,7 +33,6 @@
             <%= current_user.email %>
           </div>
         <% end %>
-      </div>
     </nav>
   </header>
   <body> 

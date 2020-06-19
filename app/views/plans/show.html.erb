@@ -1,13 +1,39 @@
-<h1><%= I18n.t("title.plan_title") %></h1>
-<%= I18n.t("activerecord.attributes.plan.name") %>
-<%= @plan.name %>
-<%= I18n.t("activerecord.attributes.plan.content") %>
-<%= @plan.content %>
-<%= I18n.t("activerecord.attributes.plan.updated_at") %>
-<%= I18n.l(@plan.updated_at, format: :long) %>
-<% if @plan.user == current_user %>
-  <%= link_to I18n.t("button.edit") , edit_plan_path(@plan) , class: "button_base button_info" %>
-  <%= link_to I18n.t("button.destroy")  , plan_path(@plan) , method: :delete , class: "button_base button_warning destroy_plan"%>
-  <%= link_to "スケジュール作成" , plan_schedules_path(@plan) , class: "button_base button_info" %>
-<% end %>
-  <%= link_to I18n.t("button.plan_item_index") , plan_plan_items_path(@plan) , class: "button_base button_info" %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3 col-xs-12">
+      <div class="frame"> 
+        <div>
+          <h3><%= @plan.name %></h3>
+        </div>
+        <div>
+          <%= @plan.content %>
+        </div>
+        <% if @plan.user == current_user %>
+          <div class="button_wrapper">
+            <%= link_to I18n.t("button.edit") , edit_plan_path(@plan) , class: "button_base button_info" %>
+            <%= link_to I18n.t("button.destroy")  , plan_path(@plan) , method: :delete , class: "button_base button_warning destroy_plan"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-9 col-xs-12">
+      <div class="frame"> 
+        <div class="button_wrapper">
+          <% if @plan.user == current_user %>
+            <%= link_to "スケジュール作成" , plan_schedules_path(@plan) , class: "button_base button_info" %>
+          <% end %>
+          <%= link_to I18n.t("button.plan_item_index") , plan_plan_items_path(@plan) , class: "button_base button_info" %>
+        </div>
+        <% @plan.schedule do |item| %>
+          <div class="shadow card_margin card_mini list-group-item">
+            <div class="card-content">
+              <%= tag.div item.id , class: 'hide item_id' %>
+              <h1 class="card-title"><%= item.title %></h1>
+              <p class="card-text"><%= item.content %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+.button_wrapper {
+  display: table;
+  text-align: center;
+  margin: auto;
+  border-collapse: separate;
+  border-spacing: 5px 10px;
+}
+
+.button_base {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-align:center;
+  text-decoration: none;
+  border-radius: 4px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  width: 450px;
+  height: 50px;
+  display: table-cell;
+  vertical-align: middle; 
+}
+
+.button_base:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
+
+.button_info {
+  color: #ffffff;
+  background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #5e7fca;
+}
+
+.button_warning {
+  color: #ffffff;
+  background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #c58668;
+}
