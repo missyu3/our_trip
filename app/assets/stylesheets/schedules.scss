@@ -1,13 +1,17 @@
 #sortable_list_A{
-  border: double 5px #4ec4d3;
   height: 600px;
-  width: 250px;
+  width: 400px;
   overflow: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #sortable_list_B{
-  border: double 5px #4ec4d3;
   height: 600px;
-  width: 250px;
+  width: 400px;
   overflow: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
 }

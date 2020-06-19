@@ -6,18 +6,21 @@ ja:
     session_new: ログイン
     user_new: サインイン
     user_edit: ユーザー編集
+    my_page: マイページ
     new: 新規
     edit: 編集
     plan_title: 旅行計画
     plan_item_title: 旅行項目
   button:
     menu: メニュー
+    my_page: マイページ
     login: ログイン
     logout: ログアウト
     sign_in: 新規登録
     edit: 編集
     destroy: 削除
     plan_index: 旅行計画一覧
+    plan_new: 旅行計画作成
     plan_item_index: 旅行項目一覧
     plan_item_new: 旅行項目追加
   message:

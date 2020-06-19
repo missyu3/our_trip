@@ -8,20 +8,20 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <header>
-    <nav class="navbar">
+    <nav class="nav">
       <%= link_to I18n.t("title.app"), plans_path, class: "navbar-brand"%>
-      <div class="collapse navbar-collapse" id="navbarEexample7">
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-expanded="false">
               <%= I18n.t("button.menu") %> <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
+              <li role="presentation"><%= link_to I18n.t("button.plan_index"), plans_path %></li>
+              <li role="presentation" class="divider"></li>
               <% if user_signed_in? %>
+                <li role="presentation"><%= link_to I18n.t("button.my_page"), user_path(current_user.id) %></li>
                 <li role="presentation"><%= link_to I18n.t("button.logout"), destroy_user_session_path, method: :delete %></li>
               <% else %>
-                <li role="presentation"><%= link_to I18n.t("button.plan_index"), plans_path %></li>
-                <li role="presentation" class="divider"></li>
                 <li role="presentation"><%= link_to I18n.t("button.sign_in"), new_user_registration_path %></li>
                 <li role="presentation"><%= link_to I18n.t("button.login"), new_user_session_path %></li>
               <% end %>
@@ -33,7 +33,6 @@
             <%= current_user.email %>
           </div>
         <% end %>
-      </div>
     </nav>
   </header>
   <body> 

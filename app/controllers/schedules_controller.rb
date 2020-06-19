@@ -4,7 +4,7 @@ class SchedulesController < ApplicationController
 
   def index
     @schedule = @plan.schedule
-    @plan_item = PlanItem.where_not_include_schedule(@schedule)
+    @plan_item = @plan.plan_items.where_not_include_schedule(@schedule)
   end
 
   def sort

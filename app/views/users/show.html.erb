@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3 col-xs-12">
+      <div class="frame"> 
+        <img src=<%= @user.image %> class = "icon_image my_page_icon">
+        <div> 
+          <%= @user.name %>
+        </div>
+        <div> 
+          <%= @user.email %>
+        </div>
+        <hr>
+        <div class="my_page_button"> 
+          <%= link_to I18n.t("button.edit"), edit_user_registration_path , class: "button_base button_info" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9 col-xs-12">
+      <div class="row frame"> 
+        <% @user.plans.each do |plan| %>
+          <div class="col-md-6 col-xs-12 ">
+            <div class="shadow card_margin card">
+              <%= link_to plan_path(plan), class: "card_link" do %>
+                <%= image_tag 'travel.jpg', class: "card-img" %>
+                <div class="card-content">
+                  <h1 class="card-title"><%= plan.name %></h1>
+                  <p class="card-text"><%= plan.content %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
