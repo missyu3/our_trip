@@ -38,4 +38,6 @@ gem 'devise-i18n'
 gem 'rails-i18n', '~> 5.1'
 gem 'acts_as_list'
 gem 'jquery-rails' 
+gem 'carrierwave'
+
 
