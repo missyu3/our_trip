@@ -18,6 +18,7 @@
             </a>
             <ul class="dropdown-menu" role="menu">
               <% if user_signed_in? %>
+                <li role="presentation"><%= link_to I18n.t("button.my_page"), user_path(current_user.id) %></li>
                 <li role="presentation"><%= link_to I18n.t("button.logout"), destroy_user_session_path, method: :delete %></li>
               <% else %>
                 <li role="presentation"><%= link_to I18n.t("button.plan_index"), plans_path %></li>

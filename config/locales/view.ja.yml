@@ -6,12 +6,14 @@ ja:
     session_new: ログイン
     user_new: サインイン
     user_edit: ユーザー編集
+    my_page: マイページ
     new: 新規
     edit: 編集
     plan_title: 旅行計画
     plan_item_title: 旅行項目
   button:
     menu: メニュー
+    my_page: マイページ
     login: ログイン
     logout: ログアウト
     sign_in: 新規登録

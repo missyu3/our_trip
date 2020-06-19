@@ -12,17 +12,11 @@ Rails.application.routes.draw do
     end
   end
   
-  devise_for :users, :controllers => {
-  :registrations => 'users/registrations',
-  :sessions => 'users/sessions'   
-  } 
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
 
   resources :users, only: [:show]
-devise_scope :user do
-  get "signup", :to => "users/registrations#new"
-  get "login", :to => "users/sessions#new"
-  get "logout", :to => "users/sessions#destroy"
-end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
