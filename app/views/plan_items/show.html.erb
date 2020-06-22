@@ -1,10 +1,16 @@
-<%= I18n.t("activerecord.attributes.plan_item.title") %>
-<%= @plan_item.title %>
-<%= I18n.t("activerecord.attributes.plan_item.content") %>
-<%= @plan_item.content %>
-<%= I18n.t("activerecord.attributes.plan_item.updated_at") %>
-<%= I18n.l(@plan_item.updated_at, format: :long) %>
-<% if @plan_item.plan.user == current_user || @plan_item.user == current_user %>
-  <%= link_to I18n.t("button.edit") , edit_plan_plan_item_path(@plan_item.id) , class: "button_base button_info" %>
-  <%= link_to I18n.t("button.destroy")  , plan_plan_item_path(@plan_item.id) , method: :delete , class: "button_base button_warning"%>
-<% end %>
+<div class='center_form'>
+  <div class="show_box frame">
+    <div class="show_title text-left"><%= @plan_item.title %></div>
+    <hr>
+    <div class="show_content text-left"><%= simple_format(@plan_item.content) %></div>
+    <div class="show_name text-right"><%= @plan_item.user.name %></div>
+    <div class="show_name text-right"><%= I18n.l(@plan_item.updated_at, format: :long) %></div>
+    <% if @plan_item.plan.user == current_user || @plan_item.user == current_user %>
+    <hr>
+      <div class="button_wrapper">
+        <%= link_to I18n.t("button.edit") , edit_plan_plan_item_path(@plan_item.id) , class: "button_base button_info" %>
+        <%= link_to I18n.t("button.destroy")  , plan_plan_item_path(@plan_item.id) , method: :delete , class: "button_base button_warning"%>
+      </div>
+    <% end %>
+  </div>
+</div>
