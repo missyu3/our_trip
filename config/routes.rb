@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/show'
-  root 'plans#index'
+  root 'tops#show'
+  resources :tops, only: [:show]
   resources :plans do
     resources :plan_items
     resources :schedules, only: [:index]  do 
