@@ -1,0 +1,30 @@
+.top-box{
+  position: relative;
+
+}
+
+.top-img {
+  width: 100%;
+  height: Auto;
+  max-height: 800px;
+  object-fit: cover; 
+  margin: 0px;
+  padding: 0px;
+}
+
+.top-title-message{
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: white;
+}
+
+.top_button {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}

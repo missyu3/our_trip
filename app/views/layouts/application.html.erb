@@ -6,10 +6,11 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
   </head>
   <header>
     <nav class="nav">
-      <%= link_to I18n.t("title.app"), plans_path, class: "navbar-brand"%>
+      <%= link_to I18n.t("title.app"), root_path, class: "navbar-brand"%>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-expanded="false">
@@ -36,9 +37,7 @@
     </nav>
   </header>
   <body> 
-    <div class='center_form'>
-      <%= yield %>
-    </div>
+    <%= yield %>
   </body>
   <footer>©️missyu3 2020</footer>
 </html>

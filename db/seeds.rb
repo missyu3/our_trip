@@ -55,7 +55,7 @@ Plan.create(id: 7,
 
 # nothing: 0, move: 1, activity: 2, meal: 3, lodging: 4
 PlanItem.create(plan_id: 1,
-                title: "札幌空港",
+                title: "新千歳空港",
                 category: 1,
                 content: "飛行機で札幌空港に降り立つ。今日から美食づくしだ！",
                 user_id: 6
