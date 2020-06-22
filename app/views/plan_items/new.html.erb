@@ -1,3 +1,5 @@
-<h1><%= I18n.t("title.new") %></h1>
-<%= render partial: "common/error", locals: { model: @plan_item } %>
-<%= render "form", plan: @plan , plan_item: @plan_item %>
+<div class='center_form'>
+  <h1><%= I18n.t("title.new") %></h1>
+  <%= render partial: "common/error", locals: { model: @plan_item } %>
+  <%= render "form", plan: @plan , plan_item: @plan_item %>
+</div>
