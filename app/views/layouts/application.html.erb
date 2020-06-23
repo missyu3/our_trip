@@ -37,6 +37,13 @@
     </nav>
   </header>
   <body> 
+    <% if notice %>
+      <p class="alert alert-notice center_form"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger center_form"><%= alert %></p>
+    <% end %>
+    
     <%= yield %>
   </body>
   <footer>©️missyu3 2020</footer>
