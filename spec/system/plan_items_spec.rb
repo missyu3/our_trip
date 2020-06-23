@@ -7,9 +7,9 @@ RSpec.describe "plan_item", type: :system do
   let(:plan_item2) { create(:plan_item , user_id: user_test.id , plan_id: plan.id , title: "沖縄" , content: "豚足") }
   before do
     visit new_user_session_path
-    fill_in "メールアドレス", with: user_test.email
+    fill_in "Eメール", with: user_test.email
     fill_in "パスワード", with:user_test.password
-    click_button 'Log in'
+    click_button 'ログイン'
   end
   describe 'plan_item' do
     context '作成' do
