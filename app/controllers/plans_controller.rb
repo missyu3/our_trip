@@ -64,6 +64,6 @@ binding.irb
   end
 
   def plan_params
-    params.require(:plan).permit(:name, :content)
+    params.require(:plan).permit(:name, :content, :image)
   end
 end
