@@ -1,9 +1,9 @@
-<div class="container center_form">
+<div class="container">
   <div class="row">
     <div class="col-sm-3 col-xs-12">
       <div class="frame"> 
         <div>
-          <h3><%= @plan.name %></h3>
+          <h3 class="text-center"><%= @plan.name %></h3>
         </div>
         <hr>
         <div class="show_content">
@@ -26,16 +26,15 @@
           <% end %>
           <%= link_to I18n.t("button.plan_item_index") , plan_plan_items_path(@plan) , class: "button_base button_info" %>
         </div>
-        <% @plan.schedule do |item| %>
-          <div class="shadow card_margin card_mini list-group-item">
-            <div class="card-content">
-              <%= tag.div item.id , class: 'hide item_id' %>
-              <h1 class="card-title"><%= item.title %></h1>
-              <p class="card-text"><%= item.content %></p>
-            </div>
-          </div>
-        <% end %>
       </div>
+      <% @plan.schedule.each do |item| %>
+        <div class="list_item frame list_index_box"> 
+          <div class="list_index"><%= item.position %></div>
+          <div class="list_title"><%= item.plan_item.title %></div>
+          <hr>
+          <div class="list_content"><%= simple_format(item.plan_item.content) %></div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
