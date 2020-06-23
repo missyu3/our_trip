@@ -1,15 +1,17 @@
-<div class="button_wrapper">
-  <%= link_to I18n.t("button.plan_new"), new_plan_path, class: "button_base button_info" %>
-</div>
-<% @plan.each do |plan| %>
-  <div class="list_item frame">
-    <%= link_to plan_path(plan) do %>
-      <h1 class="list_title text-left"><%= plan.name %></h1>
-      <hr>
-      <div class="box">
-        <%= image_tag 'travel.jpg', class: "list_img" %>
-        <div class="list_image_with_content"><%= simple_format(plan.content) %></div>
-      </div>
-    <% end %>
+<div class="center_form">
+  <div class="button_wrapper">
+    <%= link_to I18n.t("button.plan_new"), new_plan_path, class: "button_base button_info" %>
   </div>
-<% end %>
+  <% @plan.each do |plan| %>
+    <div class="list_item frame">
+      <%= link_to plan_path(plan) do %>
+        <h1 class="list_title text-left"><%= plan.name %></h1>
+        <hr>
+        <div class="list_box">
+          <%= image_tag 'travel.jpg', class: "list_img" %>
+          <div class="list_image_with_content"><%= simple_format(plan.content) %></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

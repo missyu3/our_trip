@@ -19,17 +19,29 @@
   margin-left: 25px
 }
 
-.list_image_with_content {
-  display: inline-block;
-  vertical-align: top;
+.list_box{
+  display: table;
+  padding: 0px;
+  margin: 0px;
   margin-top: 5px;
+	min-height:80px;
 }
 
+.list_image_with_content {
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 5px;
+}
+
+
 .list_img{
-  border-radius: 5px 5px 0 0;
-  max-width: 100%;
-  height: 100px;
+  display: table-cell;
+  max-width: 150px;
+  max-height: 100px;
   left: 0px;
+  top: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .list_right {

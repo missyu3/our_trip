@@ -1,4 +1,4 @@
-<div class="container center_form">
+<div class="container">
   <div class="row">
     <div class="col-sm-3 col-xs-12">
       <div class="frame"> 
@@ -16,19 +16,18 @@
       </div>
     </div>
     <div class="col-sm-9 col-xs-12">
-      <div class="row frame"> 
+      <div class="row"> 
         <% @user.plans.each do |plan| %>
-          <div class="col-md-6 col-xs-12 ">
-            <div class="shadow card_margin card">
+            <div class="list_item frame">
               <%= link_to plan_path(plan), class: "card_link" do %>
-                <%= image_tag 'travel.jpg', class: "card-img" %>
-                <div class="card-content">
-                  <h1 class="card-title"><%= plan.name %></h1>
-                  <p class="card-text"><%= plan.content %></p>
-                </div>
+                <h1 class="list_title text-left"><%= plan.name %></h1>
+                <hr>
+                <div class="list_box">
+                <%= image_tag 'travel.jpg', class: "list_img" %>
+                <p class="list_image_with_content"><%= plan.content %></p>
+              </div>
               <% end %>
             </div>
-          </div>
         <% end %>
       </div>
     </div>
