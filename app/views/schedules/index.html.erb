@@ -9,8 +9,8 @@
               <div class="card-content">
                 <%= tag.div item.id , class: 'hide item_id' %>
                 <h1 class="card-title"><%= item.plan_item.title %></h1>
-                <p class="card-text"><%= item.plan_item.content %></p>
-                <%= link_to "詳細" ,plan_plan_item_path(id: item.plan_item.id , plan_id: item.plan_id) %>
+                <hr>
+                <p class="card-text"><%= simple_format(item.plan_item.content) %></p>
               </div>
             </div>
           <% end %>
@@ -23,7 +23,8 @@
               <div class="card-content">
                 <%= tag.div item.id , class: 'hide item_id' %>
                 <h1 class="card-title"><%= item.title %></h1>
-                <p class="card-text"><%= item.content %></p>
+                <hr>
+                <p class="card-text"><%= simple_format(item.content) %></p>
               </div>
             </div>
           <% end %>
