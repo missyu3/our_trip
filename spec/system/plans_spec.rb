@@ -4,9 +4,9 @@ RSpec.describe "plan", type: :system do
   let(:user_test) { create(:user) }
   before do
     visit new_user_session_path
-    fill_in "メールアドレス", with: user_test.email
+    fill_in "Eメール", with: user_test.email
     fill_in "パスワード", with:user_test.password
-    click_button 'Log in'
+    click_button 'ログイン'
   end
   describe 'plan' do
     context '作成' do

@@ -7,9 +7,9 @@ RSpec.describe "plan_item", type: :system do
   let(:plan_item2) { create(:plan_item , user_id: user_test.id , plan_id: plan.id , title: "沖縄" , content: "豚足") }
   before do
     visit new_user_session_path
-    fill_in "メールアドレス", with: user_test.email
+    fill_in "Eメール", with: user_test.email
     fill_in "パスワード", with:user_test.password
-    click_button 'Log in'
+    click_button 'ログイン'
   end
   describe 'plan_item' do
     context '作成' do
@@ -38,7 +38,6 @@ RSpec.describe "plan_item", type: :system do
         click_button '更新する'
       end
       it '作成が成功すること' do
-        expect(page).to have_content "行きたい場所一覧"
         expect(page).to have_content "東京"
         expect(page).to have_content "東京メトロ"
         expect(page).to_not have_content "函館"
@@ -55,7 +54,6 @@ RSpec.describe "plan_item", type: :system do
         click_on "削除"
       end
       it '作成が成功すること' do
-        expect(page).to have_content "行きたい場所一覧"
         expect(page).to_not have_content "函館"
         expect(page).to_not have_content "お寿司、海胆"
         expect(page).to have_content "沖縄"
