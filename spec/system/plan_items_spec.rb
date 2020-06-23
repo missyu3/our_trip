@@ -38,7 +38,6 @@ RSpec.describe "plan_item", type: :system do
         click_button '更新する'
       end
       it '作成が成功すること' do
-        expect(page).to have_content "行きたい場所一覧"
         expect(page).to have_content "東京"
         expect(page).to have_content "東京メトロ"
         expect(page).to_not have_content "函館"
@@ -55,7 +54,6 @@ RSpec.describe "plan_item", type: :system do
         click_on "削除"
       end
       it '作成が成功すること' do
-        expect(page).to have_content "行きたい場所一覧"
         expect(page).to_not have_content "函館"
         expect(page).to_not have_content "お寿司、海胆"
         expect(page).to have_content "沖縄"
