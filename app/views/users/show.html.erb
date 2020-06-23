@@ -16,6 +16,9 @@
       </div>
     </div>
     <div class="col-sm-9 col-xs-12">
+      <div class="button_wrapper">
+        <%= link_to I18n.t("button.plan_new"), new_plan_path, class: "button_base button_info" %>
+      </div>
       <div class="row"> 
         <% @user.plans.each do |plan| %>
             <div class="list_item frame">
