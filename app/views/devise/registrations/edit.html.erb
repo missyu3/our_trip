@@ -16,7 +16,7 @@
   
     <div class="field">
       <%= f.label :image %><br/>
-      <%= f.file_field :image %>
+      <%= f.file_field :image ,  class: "center_controller"  %>
     </div>
   
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
