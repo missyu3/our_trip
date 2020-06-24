@@ -49,5 +49,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'dotenv-rails'
 gem 'dotenv-rails'
-gem 'unicorn'
+gem 'unicorn', '5.4.1'
 gem 'mini_racer', platforms: :ruby
