@@ -18,6 +18,11 @@ group :development, :test do
   gem 'letter_opener_web'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'capistrano', '3.6.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
@@ -25,6 +30,8 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
 end
 
 group :test do
@@ -41,3 +48,6 @@ gem 'jquery-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'dotenv-rails'
+gem 'dotenv-rails'
+gem 'unicorn'
+gem 'mini_racer', platforms: :ruby
