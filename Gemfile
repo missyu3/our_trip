@@ -50,4 +50,4 @@ gem 'mini_magick'
 gem 'dotenv-rails'
 gem 'unicorn' 
 gem 'mini_racer', platforms: :ruby
-gem 'fog-aws'
+gem 'fog'
