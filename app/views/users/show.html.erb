@@ -30,7 +30,11 @@
                 <h1 class="list_title text-left"><%= plan.name %></h1>
                 <hr>
                 <div class="list_box">
-                <%= image_tag 'travel.jpg', class: "list_img" %>
+                <% if plan.image.present? %>
+                  <%= image_tag plan.image.url , class: "list_img" %>
+                <% else %>
+                  <%= image_tag 'travel.jpg', class: "list_img" %>
+                <% end %>
                 <p class="list_image_with_content"><%= plan.content %></p>
               </div>
               <% end %>
