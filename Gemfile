@@ -48,6 +48,5 @@ gem 'jquery-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'dotenv-rails'
-gem 'dotenv-rails'
-gem 'unicorn'
+gem 'unicorn' 
 gem 'mini_racer', platforms: :ruby
