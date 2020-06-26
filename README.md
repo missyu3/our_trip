@@ -53,3 +53,25 @@ Webを介して旅行を計画する際に、その手助けを行う。
   - devise
 - 就業Term外
   - React
+
+## Dockerに関して
+- イメージの作成
+  - docker build .
+- コンテナの起動
+  - docker run -it -v /Users/matsumoto/workspace/portfolio/our_trip:/our_trip <image> bash
+
+- composeイメージの作成
+  - docker-compose up -d
+- composeの起動
+  - docker-compose exec web bash
+
+- 全削除
+  - image
+    - docker images -aq | xargs docker rmi
+  - コンテナ
+    - docker ps -aq | xargs docker rm
+
+
+## AWSに関して
+- デプロイ
+  - bundle exec cap production deploy
