@@ -11,6 +11,8 @@ ja:
     edit: 編集
     plan_title: 旅行計画
     plan_item_title: 旅行項目
+    schedule: スケジュール
+    plan_items: 項目一覧
   button:
     menu: メニュー
     my_page: マイページ
@@ -23,6 +25,8 @@ ja:
     plan_new: 旅行計画作成
     plan_item_index: 旅行項目一覧
     plan_item_new: 旅行項目追加
+    schedule_new: スケジュール作成
+    schedule_show: スケジュール表示
   message:
     welcome_user: "ようこそ{name}さん"
     make_a_travel_plan: "みんなで旅行計画を作成しよう！"

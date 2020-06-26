@@ -1,8 +1,11 @@
-<h1>スケジュール作成</h1>
-
+<h1 class="center_form"><%= I18n.t("button.schedule_new") %></h1>
+<div class="button_wrapper">
+  <%= link_to I18n.t("button.schedule_show") , plan_path(@plan) , class: "button_base button_info" %>
+</div>
 <div class="container">
     <div class="row">
       <div class="col-xs-6 ">
+        <h3 class="center_form"><%= I18n.t("title.schedule") %></h3>
         <div id="sortable_list_A" class="list-group col frame">
           <% @plan.schedule.each do |item| %>
             <div class="shadow card_margin card_mini list-group-item">
@@ -17,6 +20,7 @@
         </div>
       </div>
       <div class="col-xs-6 ">
+        <h3 class="center_form"><%= I18n.t("title.plan_items") %></h3>
         <div id="sortable_list_B" class="list-group col frame">
           <% @plan_item.each_with_index do |item,i| %>
             <div class="shadow card_margin card_mini list-group-item">
