@@ -22,7 +22,7 @@
       <div class="frame"> 
         <div class="button_wrapper">
           <% if @plan.user == current_user %>
-            <%= link_to "スケジュール作成" , plan_schedules_path(@plan) , class: "button_base button_info" %>
+            <%= link_to I18n.t("button.schedule_new") , plan_schedules_path(@plan) , class: "button_base button_info" %>
           <% end %>
           <%= link_to I18n.t("button.plan_item_index") , plan_plan_items_path(@plan) , class: "button_base button_info" %>
         </div>
