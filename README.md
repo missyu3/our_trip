@@ -78,6 +78,19 @@ Webを介して旅行を計画する際に、その手助けを行う。
     - コンテナ
       - docker ps -aq | xargs docker rm
 
+### psqlに関して
+1. docker-compose exec db bash
+1. su postgres
+1. psql our_trip_development
+
 ## AWSに関して
 - デプロイ
   - bundle exec cap production deploy
+
+## Seedデータ登録時にIDがずれる問題に関して
+rails db:seedを実施した後、稀にIDがズレるためズレるため
+- SELECT setval('users_id_seq', (SELECT MAX(id) FROM users));
+- SELECT setval('plans_id_seq', (SELECT MAX(id) FROM plans));
+- SELECT setval('plan_items_id_seq', (SELECT MAX(id) FROM plan_items));
+- SELECT setval('schedules_id_seq', (SELECT MAX(id) FROM schedules));
+
