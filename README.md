@@ -52,4 +52,32 @@ Webを介して旅行を計画する際に、その手助けを行う。
   - AWS
   - devise
 - 就業Term外
-  - React
+  - Docker
+
+## Dockerに関して
+- 手順
+  1. docker-compose up -d
+  1. docker-compose exec web bash
+  1. bundle install
+  1. rails db:create
+  1. rails db:migrate
+  1. rails s -b 0.0.0.0
+
+- コマンドに関して
+  - イメージの作成
+    - docker build .
+  - コンテナの起動
+    - docker run -it -v /Users/matsumoto/workspace/portfolio/our_trip:/our_trip <image> bash
+  - composeイメージの作成
+    - docker-compose up -d
+  - composeの起動
+    - docker-compose exec web bash
+  - 全削除
+    - image
+      - docker images -aq | xargs docker rmi
+    - コンテナ
+      - docker ps -aq | xargs docker rm
+
+## AWSに関して
+- デプロイ
+  - bundle exec cap production deploy

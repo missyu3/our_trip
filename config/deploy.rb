@@ -21,7 +21,22 @@ set :rbenv_type, :system
 # 本番環境用のものであれば、 :info程度が普通。
 # ただし挙動をしっかり確認したいのであれば :debug に設定する。
 set :log_level, :info
+
+
+set :bundle_flags,      '--quiet' # this unsets --deployment, see details in config_bundler task details
+set :bundle_path,       nil
+set :bundle_without,    nil
 namespace :deploy do
+  desc 'Config bundler'
+  task :config_bundler do
+    on roles(/.*/) do
+      within release_path do
+        execute :bundle, :config, '--local deployment true'
+        execute :bundle, :config, '--local without "development test"'
+        execute :bundle, :config, "--local path #{shared_path.join('bundle')}"
+      end
+    end
+  end
   desc 'Restart application'
   task :restart do
     invoke 'unicorn:restart'
@@ -52,3 +67,5 @@ namespace :deploy do
     end
   end
 end
+
+before 'bundler:install', 'deploy:config_bundler'
