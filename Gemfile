@@ -37,7 +37,7 @@ end
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'webdrivers'
+  gem 'webdrivers', require: !ENV['SELENIUM_DRIVER_URL']
 end
 
 gem 'devise'

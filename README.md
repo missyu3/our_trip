@@ -54,6 +54,9 @@ Webを介して旅行を計画する際に、その手助けを行う。
 - 就業Term外
   - Docker
 
+## Dockerでの注意点
+- 登録する際にdatabaseの接続先情報を変更しているため、Dockerに入らないとtestとrails sは起動しません。
+
 ## Dockerに関して
 - 手順
   1. docker-compose up -d
