@@ -11,7 +11,7 @@ class PlanItemsController < ApplicationController
   def create
     @plan_item = current_user.plan_items.new(plan_item_params)
     if @plan_item.save
-      redirect_to plan_plan_item_path(id: @plan_item.id)
+      redirect_to plan_plan_items_path(lan_id: @plan_item.plan_id)
     else
       render :new
     end
