@@ -11,14 +11,13 @@ services:
     volumes: 
       - '.:/our_trip'
     environment:
-      DATABASE_PASSWORD: postgres
+      - "DATABASE_PASSWORD=postgres"
     tty: true
     stdin_open: true
     depends_on: 
       - db
     links: 
       - db
-  
   db:
     image: postgres
     volumes: 
