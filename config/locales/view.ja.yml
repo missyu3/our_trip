@@ -31,6 +31,7 @@ ja:
     welcome_user: "ようこそ{name}さん"
     make_a_travel_plan: "みんなで旅行計画を作成しよう！"
     app_explanation: "OurTripはみんなで旅行計画を作ることをサポートします。旅行計画を出し合って、スケジュールの作成が行えます。"
+    please_create_plan_item: 旅行項目を先に作成してください。
   enum:
     categories:
       nothing: ""
