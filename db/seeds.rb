@@ -92,7 +92,7 @@ PlanItem.create(plan_id: plan1.id,
                 user_id: user1.id
 )
 
-PlanItem.create(plan_id: plan4.id,
+PlanItem.create(plan_id: plan1.id,
                 title: "JRタワーホテル日航札幌",
                 category: 2,
                 content: "JR札幌駅直結！美味しいお食事と天然温泉のスパで疲れを癒そう！",
