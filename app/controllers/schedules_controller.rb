@@ -16,11 +16,7 @@ class SchedulesController < ApplicationController
   def add
     position = params[:to].to_i + 1
     schedule = Schedule.new(plan_id: @plan.id, plan_item_id: params[:evt_id].to_i, position: position)
-    if schedule.save
-
-    else
-      binding.irb
-    end
+    schedule.save
   end
 
   def remove

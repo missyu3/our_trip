@@ -1,4 +1,7 @@
 <h1 class="center_form"><%= I18n.t("button.schedule_new") %></h1>
+<% if @plan_item.blank? %>
+  <div class="message_box"><%= I18n.t("message.please_create_plan_item") %></div>
+<% end %>
 <div class="button_wrapper">
   <%= link_to I18n.t("button.schedule_show") , plan_path(@plan) , class: "button_base button_info" %>
 </div>
