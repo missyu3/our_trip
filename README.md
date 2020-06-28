@@ -43,9 +43,8 @@ Webを介して旅行を計画する際に、その手助けを行う。
   - https://drive.google.com/file/d/1NrgDaCkWMpHfCc_lyGMe710cn_S7GN9m/view?usp=sharing
 
 ## 使用予定Gem
-- react-rails
 - webpacker
-- activerecord-import
+- devise
 
 ## 使用技術
 - 就業Term
