@@ -13,7 +13,8 @@ class PlanItemsController < ApplicationController
     if @plan_item.save
       redirect_to plan_plan_items_path(lan_id: @plan_item.plan_id)
     else
-      render :new
+      @plan = @plan_item.plan
+      render template: "plan_items/new", id: @plan_item.plan_id
     end
   end
 
