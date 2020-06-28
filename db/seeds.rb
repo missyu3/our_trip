@@ -100,7 +100,7 @@ PlanItem.create(plan_id: plan4.id,
 )
 
 
-PlanItem.create(plan_id: plan.id,
+PlanItem.create(plan_id: plan2.id,
                 title: "センチュリーロイヤルホテル",
                 category: 2,
                 content: "美味しい食事が提供される、評判の良いホテルです",
