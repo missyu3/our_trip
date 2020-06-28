@@ -15,6 +15,7 @@ ja:
     plan_items: 項目一覧
   button:
     menu: メニュー
+    back: 戻る
     my_page: マイページ
     login: ログイン
     logout: ログアウト
