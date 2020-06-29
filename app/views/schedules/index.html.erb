@@ -16,7 +16,9 @@
                 <%= tag.div item.id , class: 'hide item_id' %>
                 <h1 class="card-title"><%= item.plan_item.title %></h1>
                 <hr>
-                <p class="card-text"><%= simple_format(item.plan_item.content) %></p>
+                <div class="card-text"><%= simple_format(item.plan_item.content) %></div>
+                <div class="list_right"><%= item.plan_item.user.name %></div>
+                <div class="list_right"><%= I18n.l(item.plan_item.updated_at, format: :long) %></div>
               </div>
             </div>
           <% end %>
@@ -31,7 +33,9 @@
                 <%= tag.div item.id , class: 'hide item_id' %>
                 <h1 class="card-title"><%= item.title %></h1>
                 <hr>
-                <p class="card-text"><%= simple_format(item.content) %></p>
+                <div class="card-text"><%= simple_format(item.content) %></div>
+                <div class="list_right"><%= item.user.name %></div>
+                <div class="list_right"><%= I18n.l(item.updated_at, format: :long) %></div>
               </div>
             </div>
           <% end %>
