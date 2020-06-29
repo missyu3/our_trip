@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :tops, only: [:show]
   resources :plans do
     resources :plan_items
+    resources :participants, only: [:index, :show, :create, :destory]
     resources :schedules, only: [:index]  do 
       collection do
         patch :sort
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }

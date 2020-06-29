@@ -4,6 +4,7 @@ class Plan < ApplicationRecord
   belongs_to :user
   has_many :plan_items, dependent: :destroy
   has_many :schedule, -> { order(position: :asc) } , dependent: :destroy
+  has_many :participants, dependent: :destroy
 
   validates :name, presence: true
 
