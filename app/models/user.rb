@@ -11,6 +11,9 @@ class User < ApplicationRecord
   has_many :plan_items, dependent: :destroy
   has_one :participants, dependent: :destroy
 
+  validates :name, uniqueness: true
+  validates :email, uniqueness: true
+
   def self.gest_user_find_or_create
     user = User.find_or_create_by!(name: 'gest_user',email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
