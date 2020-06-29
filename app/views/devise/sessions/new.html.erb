@@ -24,7 +24,7 @@
         <%= f.submit t('.sign_in') %>
       </div>
     <% end %>
-    
+    <%= link_to "gest_login" , users_guest_sign_in_path, method: :post, class: "button" %><br />
     <%= render "devise/shared/links" %>
   </div>
 </div>

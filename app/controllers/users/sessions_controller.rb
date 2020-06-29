@@ -3,6 +3,12 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  def new_guest
+    user = User.gest_user_find_or_create
+    sign_in user
+    redirect_to user_path(user), notice: I18n.t("message.login_gest_user")
+  end
+
   # GET /resource/sign_in
   # def new
   #   super
