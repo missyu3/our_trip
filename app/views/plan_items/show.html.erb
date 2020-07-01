@@ -8,8 +8,8 @@
     <% if @plan_item.plan.user == current_user || @plan_item.user == current_user %>
     <hr>
       <div class="button_wrapper">
-        <%= link_to I18n.t("button.edit") , edit_plan_plan_item_path(@plan_item.id) , class: "button_base button_info" %>
-        <%= link_to I18n.t("button.destroy")  , plan_plan_item_path(@plan_item.id) , method: :delete , class: "button_base button_warning"%>
+        <%= link_to I18n.t("button.edit") , edit_plan_plan_item_path(id: @plan_item.id , plan_id: @plan_item.plan_id) , class: "button_base button_info" %>
+        <%= link_to I18n.t("button.destroy")  , plan_plan_item_path(id: @plan_item.id , plan_id: @plan_item.plan_id) , method: :delete , class: "button_base button_warning"%>
       </div>
     <% end %>
   </div>
