@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SchedulesController < ApplicationController
   protect_from_forgery
   before_action :find_plan
@@ -8,7 +10,7 @@ class SchedulesController < ApplicationController
   end
 
   def sort
-    #fromはドラッグ前の位置、toはドラッグ後の位置
+    # fromはドラッグ前の位置、toはドラッグ後の位置
     schedule = @plan.schedule[params[:from].to_i]
     schedule.insert_at(params[:to].to_i + 1)
   end
@@ -24,10 +26,9 @@ class SchedulesController < ApplicationController
     schedule.destroy
   end
 
-  private 
-  
+  private
+
   def find_plan
     @plan = Plan.find(params[:plan_id])
   end
-
 end

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class PlanItemsController < ApplicationController
-  before_action :find_params, only: [:edit, :update, :show, :destroy]
+  before_action :find_params, only: %i[edit update show destroy]
   before_action :find_plan
-  before_action :participant_required, only: [:new, :edit]
+  before_action :participant_required, only: %i[new edit]
 
   def new
     @plan_item = PlanItem.new
@@ -12,7 +14,7 @@ class PlanItemsController < ApplicationController
     if @plan_item.save
       redirect_to plan_plan_items_path(lan_id: @plan_item.plan_id)
     else
-      render template: "plan_items/new", id: @plan_item.plan_id
+      render template: 'plan_items/new', id: @plan_item.plan_id
     end
   end
 
@@ -29,7 +31,7 @@ class PlanItemsController < ApplicationController
   def show; end
 
   def index
-    @plan_item = @plan.plan_items.order_by_updated_before    
+    @plan_item = @plan.plan_items.order_by_updated_before
   end
 
   def destroy
@@ -44,11 +46,11 @@ class PlanItemsController < ApplicationController
   end
 
   def find_plan
-    @plan = Plan.find(params[:plan_id]) 
+    @plan = Plan.find(params[:plan_id])
   end
 
   def participant_required
-    unless (@plan.user == current_user || @plan.participants.pluck(:id).include?(current_user.id))
+    unless @plan.user == current_user || @plan.participants.pluck(:id).include?(current_user.id)
       redirect_to plan_plan_items_path(plan_id: @plan.id)
     end
   end
@@ -56,5 +58,4 @@ class PlanItemsController < ApplicationController
   def plan_item_params
     params.require(:plan_item).permit(:plan_id, :title, :category, :content)
   end
-
 end

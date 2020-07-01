@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'tops#show'
   resources :tops, only: [:show]
   resources :plans do
     resources :plan_items
-    resources :participants, only: [:index, :create, :destroy]
-    resources :schedules, only: [:index]  do 
+    resources :participants, only: %i[index create destroy]
+    resources :schedules, only: [:index] do
       collection do
         patch :sort
         patch :add
@@ -21,7 +23,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show]
 
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
