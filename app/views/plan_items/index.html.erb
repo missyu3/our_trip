@@ -2,7 +2,8 @@
   <div class="button_wrapper frame">
   <% if @plan.user == current_user || @plan.participants.pluck(:id).include?(current_user.id) %>
     <%= link_to I18n.t("button.plan_item_new"), new_plan_plan_item_path, class: "button_base button_info" %>
-    <%= link_to I18n.t("button.back"), plan_path(@plan), class: "button_base button_info" %>
+  <% end %>
+    <%= link_to I18n.t("button.back"), :back, class: "button_base button_info" %>
   </div>
   <% @plan_item.each do |item| %>
   <div class="list_item frame">

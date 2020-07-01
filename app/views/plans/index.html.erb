@@ -13,7 +13,16 @@
           <% else %>
             <%= image_tag 'travel.jpg', class: "list_img" %>
           <% end %>
-          <div class="list_image_with_content"><%= simple_format(plan.content) %></div>
+          <div class="list_image_with_content">
+            <table class="table table-borderd table_layout">
+              <tr>
+                <td class="text-left"><%= simple_format(plan.content) %></td>
+              </tr>
+              <tr>
+                <td class="text-right"><%= plan.user.name %></td>
+              </tr>
+            </table>
+          </div>
         </div>
       <% end %>
     </div>
