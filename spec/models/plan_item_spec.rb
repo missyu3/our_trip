@@ -13,7 +13,7 @@ RSpec.describe PlanItem, type: :model do
     item = build(:plan_item, content: '', user_id: user_test.id, plan_id: plan.id)
     expect(item).not_to be_valid
   end
-  it '関連付けされているscheduleのデータが削除されるか' do
+  it 'データを削除した時、関連付けされているscheduleのデータが削除されるか' do
     plan_item1 = create(:plan_item, plan_id: plan.id , user_id: user_test.id)
     schedule1 = create(:schedule, plan_id: plan.id , plan_item_id: plan_item1.id)
     expect{ plan_item1.destroy }.to change{ Schedule.count }.by(-1)
