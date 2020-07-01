@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
 class PlansController < ApplicationController
-  before_action :find_params, only: [:edit, :update, :show, :destroy]
+  before_action :find_params, only: %i[edit update show destroy]
 
   def new
     @plan = Plan.new
   end
+
   def create
     @plan = current_user.plans.new(plan_params)
     if @plan.save
@@ -36,7 +39,7 @@ class PlansController < ApplicationController
 
   def sort
     @plan = Plan.find(params[:id])
-    #fromはドラッグ前の位置、toはドラッグ後の位置
+    # fromはドラッグ前の位置、toはドラッグ後の位置
     schedule = @plan.schedule[params[:from].to_i]
     schedule.insert_at(params[:to].to_i + 1)
   end
@@ -47,7 +50,7 @@ class PlansController < ApplicationController
     if @plan.schedule.create(plan_item_id: params[:evt_id].to_i, position: position)
 
     else
-binding.irb
+      binding.irb
     end
   end
 

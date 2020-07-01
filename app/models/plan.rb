@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Plan < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   belongs_to :user
-  has_many :schedule, -> { order(position: :asc) } , dependent: :destroy
+  has_many :schedule, -> { order(position: :asc) }, dependent: :destroy
   has_many :participants, dependent: :destroy
   has_many :plan_items, dependent: :destroy
 

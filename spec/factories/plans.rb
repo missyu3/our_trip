@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :plan do
-    name { "北海道" }
-    content { "海産物が美味しいよ！" }
+    name { '北海道' }
+    content { '海産物が美味しいよ！' }
     user_id { 1 }
   end
 end

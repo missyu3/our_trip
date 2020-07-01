@@ -6,7 +6,7 @@ class Users::SessionsController < Devise::SessionsController
   def new_guest
     user = User.gest_user_find_or_create
     sign_in user
-    redirect_to user_path(user), notice: I18n.t("message.login_gest_user")
+    redirect_to user_path(user), notice: I18n.t('message.login_gest_user')
   end
 
   # GET /resource/sign_in

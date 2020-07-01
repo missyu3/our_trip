@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_fill: [150, 100, "Center"]
+  process resize_to_fill: [150, 100, 'Center']
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
