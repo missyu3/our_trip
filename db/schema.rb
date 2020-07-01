@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_06_29_085821) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["plan_id", "user_id"], name: "index_participants_on_plan_id_and_user_id", unique: true
     t.index ["plan_id"], name: "index_participants_on_plan_id"
     t.index ["user_id"], name: "index_participants_on_user_id"
   end

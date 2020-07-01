@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :tops, only: [:show]
   resources :plans do
     resources :plan_items
-    resources :participants, only: [:index, :show, :create, :destory]
+    resources :participants, only: [:index, :create, :destroy]
     resources :schedules, only: [:index]  do 
       collection do
         patch :sort

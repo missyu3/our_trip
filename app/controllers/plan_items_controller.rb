@@ -1,11 +1,10 @@
 class PlanItemsController < ApplicationController
   before_action :find_params, only: [:edit, :update, :show, :destroy]
-
-#ネストさせる。そしたらParamsIDが取れるので、
+  before_action :find_plan
+  before_action :participant_required, only: [:new, :edit]
 
   def new
     @plan_item = PlanItem.new
-    @plan = Plan.find(params[:plan_id]) 
   end
 
   def create
@@ -13,14 +12,11 @@ class PlanItemsController < ApplicationController
     if @plan_item.save
       redirect_to plan_plan_items_path(lan_id: @plan_item.plan_id)
     else
-      @plan = @plan_item.plan
       render template: "plan_items/new", id: @plan_item.plan_id
     end
   end
 
-  def edit
-    @plan = Plan.find(@plan_item.plan_id) 
-  end
+  def edit; end
 
   def update
     if @plan_item.update(plan_item_params)
@@ -33,9 +29,7 @@ class PlanItemsController < ApplicationController
   def show; end
 
   def index
-    @plan = Plan.find(params[:plan_id]) 
-    @plan_item = @plan.plan_items.order_by_updated_before
-    
+    @plan_item = @plan.plan_items.order_by_updated_before    
   end
 
   def destroy
@@ -49,7 +43,18 @@ class PlanItemsController < ApplicationController
     @plan_item = PlanItem.find(params[:id])
   end
 
+  def find_plan
+    @plan = Plan.find(params[:plan_id]) 
+  end
+
+  def participant_required
+    unless (@plan.user == current_user || @plan.participants.pluck(:id).include?(current_user.id))
+      redirect_to plan_plan_items_path(plan_id: @plan.id)
+    end
+  end
+
   def plan_item_params
     params.require(:plan_item).permit(:plan_id, :title, :category, :content)
   end
+
 end

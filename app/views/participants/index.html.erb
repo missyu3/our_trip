@@ -1,0 +1,28 @@
+<div class="center_form">
+  <div class="frame">
+    <%= form_with(model: @participant , url: plan_participants_path , local: true) do |f| %>
+      <%= f.hidden_field :plan_id, value: @plan.id %>
+      <div class="container">
+        <div class="row margin_controler">
+          <%= f.text_field :name, { class: "form-control" , placeholder: I18n.t('message.participation_user_name')} %>
+        </div>
+        <div class="button_wrapper">
+          <%= f.submit nil %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% @participants.each do |participant| %>
+    <div class="frame">
+      <% if participant.user.image.present? %>
+        <%= image_tag participant.user.image.url , class: "icon_image my_page_icon" %>
+      <% else %>
+        <%= image_tag "human.png", class: "icon_image my_page_icon" %>
+      <% end %>
+      <div><%= participant.user.name %></div>
+      <% if @plan.user == current_user %>
+        <%= link_to I18n.t("button.destroy")  , plan_participant_path(id: participant.id) , method: :delete  %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
