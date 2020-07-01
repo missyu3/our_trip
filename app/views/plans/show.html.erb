@@ -6,9 +6,15 @@
           <h3 class="text-center"><%= @plan.name %></h3>
         </div>
         <hr>
-        <div class="show_content">
-          <%= @plan.content %>
-        </div>
+        <table class="table table-borderd">
+          <tr>
+            <td class="text-left"><%= simple_format(@plan.content) %></td>
+          </tr>
+          <tr>
+            <th>作成者</th>
+            <td class="text-left"><%= link_to @plan.user.name , user_path(@plan.user.id) %></td>
+          </tr>
+        </table>
         <% if @plan.user == current_user %>
           <hr>
           <div class="button_wrapper">
