@@ -69,4 +69,9 @@ RSpec.configure do |config|
     driven_by :selenium, using: :headless_chrome, screen_size: [1920, 1080],
                          options: { args: %w[headless disable-gpu no-sandbox disable-dev-shm-usage] }
   end
+  config.after(:all) do
+    if Rails.env.test?
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads_#{Rails.env}/"])
+    end
+  end
 end
