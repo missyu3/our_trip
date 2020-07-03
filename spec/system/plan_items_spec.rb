@@ -73,8 +73,10 @@ RSpec.describe 'plan_item', type: :system do
       end
     end
     context '旅行計画の参加者が旅行項目一覧画面に遷移' do
-      let(:plan1) { create(:plan, name: '北海道', user_id: user_test.id) }
+      let(:user1) { create(:user, name: 'test_user1') }
+      let(:plan1) { create(:plan, name: '北海道', user_id: user1.id) }
       before do
+        create(:participant, user_id: user_test.id, plan_id: plan1.id)
         visit plan_path(plan1.id)
         click_on "旅行項目一覧"
       end
@@ -83,7 +85,7 @@ RSpec.describe 'plan_item', type: :system do
       end
     end
     context '旅行計画の保有者でも参加者でもない人が旅行項目一覧画面に遷移' do
-      let(:user1) { create(:user, name: 'test_user1',) }
+      let(:user1) { create(:user, name: 'test_user1') }
       let(:plan1) { create(:plan, name: '北海道', user_id: user1.id) }
       before do
         visit plan_path(plan1.id)
