@@ -5,7 +5,7 @@ class PlanItem < ApplicationRecord
   belongs_to :user
   has_one :schedule, dependent: :destroy
 
-  enum categories: { nothing: 0, move: 1, activity: 2, meal: 3, lodging: 4 }
+  enum category: { nothing: 0, move: 1, activity: 2, meal: 3, lodging: 4 }
 
   validates :title, presence: true
   validates :content, presence: true
