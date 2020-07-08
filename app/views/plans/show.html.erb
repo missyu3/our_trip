@@ -8,10 +8,10 @@
         <hr>
         <table class="table table-borderd">
           <tr>
-            <td class="text-left"><%= simple_format(@plan.content) %></td>
+            <td class="text-left" colspan="2" ><%= simple_format(@plan.content) %></td>
           </tr>
           <tr>
-            <th>作成者</th>
+            <td>作成者</td>
             <td class="text-left"><%= link_to @plan.user.name , user_path(@plan.user.id) %></td>
           </tr>
         </table>

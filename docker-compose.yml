@@ -16,6 +16,7 @@ services:
     stdin_open: true
     depends_on: 
       - db
+      - chrome
     links: 
       - db
   db:
@@ -24,3 +25,7 @@ services:
       - db-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
+  chrome:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444:4444

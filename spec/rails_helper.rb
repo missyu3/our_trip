@@ -24,6 +24,17 @@ require 'rspec/rails'
 #
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
+Capybara.register_driver :remote_chrome do |app|
+  url = "http://chrome:4444/wd/hub"
+  options = ::Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--no-sandbox')
+  options.add_argument('--headless')
+  options.add_argument('--disable-gpu')
+  options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--window-size=1680,1050')
+  Capybara::Selenium::Driver.new(app, browser: :chrome, url: url, options: options)
+end
+
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
@@ -66,7 +77,14 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.before(:each, type: :system) do
-    driven_by :selenium, using: :headless_chrome, screen_size: [1920, 1080],
-                         options: { args: %w[headless disable-gpu no-sandbox disable-dev-shm-usage] }
+    driven_by :remote_chrome
+    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+    Capybara.server_port = 3000
+    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+  end
+  config.after(:all) do
+    if Rails.env.test?
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads_#{Rails.env}/"])
+    end
   end
 end

@@ -62,5 +62,38 @@ RSpec.describe 'plan_item', type: :system do
         expect(page).to have_content '豚足'
       end
     end
+    context '旅行計画所有者が旅行項目一覧画面に遷移' do
+      let(:plan1) { create(:plan, name: '北海道', user_id: user_test.id) }
+      before do
+        visit plan_path(plan1.id)
+        click_on "旅行項目一覧"
+      end
+      it '旅行項目追加ボタンが表示されているか' do
+        expect(page).to have_content '旅行項目追加'
+      end
+    end
+    context '旅行計画の参加者が旅行項目一覧画面に遷移' do
+      let(:user1) { create(:user, name: 'test_user1') }
+      let(:plan1) { create(:plan, name: '北海道', user_id: user1.id) }
+      before do
+        create(:participant, user_id: user_test.id, plan_id: plan1.id)
+        visit plan_path(plan1.id)
+        click_on "旅行項目一覧"
+      end
+      it '旅行項目追加ボタンが表示されているか' do
+        expect(page).to have_content '旅行項目追加'
+      end
+    end
+    context '旅行計画の保有者でも参加者でもない人が旅行項目一覧画面に遷移' do
+      let(:user1) { create(:user, name: 'test_user1') }
+      let(:plan1) { create(:plan, name: '北海道', user_id: user1.id) }
+      before do
+        visit plan_path(plan1.id)
+        click_on "旅行項目一覧"
+      end
+      it '旅行項目追加ボタンが表示されていないか' do
+        expect(page).to_not have_content '旅行項目追加'
+      end
+    end
   end
 end
