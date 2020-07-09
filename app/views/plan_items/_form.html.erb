@@ -7,7 +7,7 @@
     </div>
     <div class="row margin_controler">
       <%= f.label :category %> 
-      <%= f.select :category , PlanItem.category.map{ |key, value| [I18n.t("enum.categories.#{key}"), value]  } , {} , { class: "form-control" } %>
+      <%= f.select :category , PlanItem.categories.map{ |key, value| [I18n.t("enum.category.#{key}"), value]  } , {} , { class: "form-control" } %>
     </div>
     <div class="row margin_controler">
       <%= f.label :content %> 

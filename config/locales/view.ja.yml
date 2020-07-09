@@ -37,7 +37,7 @@ ja:
     login_gest_user: ゲストユーザーとしてログインしました。
     participation_user_name: 参加させたいユーザーの名前を入力してください。
   enum:
-    categories:
+    category:
       nothing: ""
       move: 移動
       activity: アクティビティ
