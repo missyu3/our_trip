@@ -5,9 +5,10 @@ class PlanItem < ApplicationRecord
   belongs_to :user
   has_one :schedule, dependent: :destroy
 
-  enum category: { nothing: 0, move: 1, activity: 2, meal: 3, lodging: 4 }
+  enum category: { move: 1, activity: 2, meal: 3, lodging: 4 }
 
   validates :title, presence: true
+  validates :category, presence: true
   validates :content, presence: true
 
   scope :order_by_updated_before, -> { order(updated_at: :desc) }
