@@ -7,13 +7,13 @@
     </div>
     <div class="row margin_controler">
       <%= f.label :category %> 
-      <%= f.select :category , PlanItem.category.map{ |key, value| [I18n.t("enum.categories.#{key}"), value]  } , {} , { class: "form-control" } %>
+      <%= f.select :category , PlanItem.categories.map{ |key,value| [I18n.t("enum.category.#{key}"), key]  } , {include_blank: true} , { class: "form-control" } %>
     </div>
     <div class="row margin_controler">
       <%= f.label :content %> 
       <%= f.text_area :content, { class: "form-control" } %>
     </div>
-    <div class="row margin_controler">
+    <div class="row margin_controler button_wrapper">
       <%= f.submit nil, { class: "button_base button_info" } %>
     </div>
   </div>

@@ -1,6 +1,14 @@
-.list_item {
+.list_margin {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.list_box{
+  display: table;
+  padding: 0px;
+  margin: 0px;
   margin-top: 5px;
-  margin-bottom: 5px;
+	min-height:80px;
 }
 
 .list_title {
@@ -12,25 +20,24 @@
   font-size: large;
 }
 
-.list_content {
-  width: 80%;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 25px
+.list_title_icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
 }
 
-.list_box{
-  display: table;
-  padding: 0px;
-  margin: 0px;
-  margin-top: 5px;
-	min-height:80px;
+.list_content {
+  text-align: left;
+  margin: 5px;
+  margin-left: 15px;
 }
+
 
 .list_image_with_content {
   display: table-cell;
   vertical-align: top;
   padding-left: 5px;
+  width: 100%;
 }
 
 
@@ -52,13 +59,12 @@
 
 .list_index_box {
   position: relative;
-
 }
 
 .list_index {
-  position: relative;
-  top: 5px;
-  left: 5px;
+  position: absolute;
+  top: -5px;
+  left: -10px;
   width: 40px;
   border-radius: 50%;
   text-align: left;
