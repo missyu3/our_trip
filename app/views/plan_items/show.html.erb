@@ -11,10 +11,6 @@
         <th>作成者</th>
         <td class="text-left"><%= @plan_item.user.name %></td>
       </tr>
-      <tr>
-        <th>更新日</th>
-        <td class="text-left"><%= I18n.l(@plan_item.updated_at, format: :long)  %></td>
-      </tr>
     </table>
     <hr>
     <% if @plan_item.plan.user == current_user || @plan_item.user == current_user %>
@@ -24,6 +20,6 @@
         <% end %>
         <%= link_to I18n.t("button.destroy")  , plan_plan_item_path(id: @plan_item.id , plan_id: @plan_item.plan_id) , method: :delete , class: "button_base button_warning"%>
       </div>
-    <% end %>    
+    <% end %>
   </div>
 </div>

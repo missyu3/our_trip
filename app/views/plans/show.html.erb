@@ -35,11 +35,15 @@
         </div>
       </div>
       <% @plan.schedule.each do |item| %>
-        <div class="list_item frame list_index_box"> 
-          <div class="list_index"><%= item.position %></div>
-          <div class="list_title"><%= item.plan_item.title %></div>
+        <div class="list_margin frame list_index_box"> 
+        <div class="list_index"><%= item.position %></div>
+          <div class="list_title">
+            <i><%= image_tag(choose_category_image(item.plan_item) , class: "list_title_icon") %></i>
+            <%= link_to item.plan_item.title , plan_plan_item_path(id: item.plan_item.id , plan_id: @plan.id)  %>
+          </div>
           <hr>
           <div class="list_content"><%= simple_format(item.plan_item.content) %></div>
+          <div class="list_right"><%= item.plan_item.user.name %></div>
         </div>
       <% end %>
     </div>

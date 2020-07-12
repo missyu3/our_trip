@@ -3,10 +3,8 @@
     <%= link_to I18n.t("button.plan_new"), new_plan_path, class: "button_base button_info" %>
   </div>
   <% @plan.each do |plan| %>
-    <div class="list_item frame">
+    <div class="list_margin frame">
       <%= link_to plan_path(plan) do %>
-        <h1 class="list_title text-left"><%= plan.name %></h1>
-        <hr>
         <div class="list_box">
           <% if plan.image.present? %>
             <%= image_tag plan.image.url, class: "list_img" %>
@@ -14,14 +12,9 @@
             <%= image_tag 'travel.jpg', class: "list_img" %>
           <% end %>
           <div class="list_image_with_content">
-            <table class="table table-borderd table_layout">
-              <tr>
-                <td class="text-left"><%= simple_format(plan.content) %></td>
-              </tr>
-              <tr>
-                <td class="text-right"><%= plan.user.name %></td>
-              </tr>
-            </table>
+            <h1 class="list_title text-left"><%= plan.name %></h1>
+            <hr>
+            <div class="list_content"><%= simple_format(plan.content) %></div>
           </div>
         </div>
       <% end %>

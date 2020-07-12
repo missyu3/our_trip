@@ -13,16 +13,14 @@
     <% end %>
   </div>
   <% @participants.each do |participant| %>
-    <div class="frame">
-      <% if participant.user.image.present? %>
-        <%= image_tag participant.user.image.url , class: "icon_image my_page_icon" %>
-      <% else %>
-        <%= image_tag "human.png", class: "icon_image my_page_icon" %>
-      <% end %>
-      <div><%= participant.user.name %></div>
-      <% if @plan.user == current_user %>
-        <%= link_to I18n.t("button.destroy")  , plan_participant_path(id: participant.id) , method: :delete  %>
-      <% end %>
+    <div class="frame list_margin text-center">
+      <div class="list_title">
+        <i><%= image_tag chose_user_icon(participant.user)  , class: "list_title_icon" %></i>
+        <%= participant.user.name %>
+        <% if @plan.user == current_user %>
+          <%= link_to I18n.t("button.destroy")  , plan_participant_path(id: participant.id) , method: :delete %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

@@ -9,19 +9,18 @@
     <div class="list_margin frame">
       <div class="list_title">
         <i><%= image_tag(choose_category_image(item) , class: "list_title_icon") %></i>
-        <%= item.title %>
+        <%= link_to item.title, plan_plan_item_path(id: item.id , plan_id: item.plan_id)  %>
       </div>
       <hr>
       <div class="list_content"><%= simple_format(item.content) %></div>
       <div class="list_right"><%= item.user.name %></div>
       <div class="button_wrapper">
-        <%= link_to "詳細", plan_plan_item_path(id: item.id , plan_id: item.plan_id) , class: "button_base button_info"  %>
         <% if item.plan.user == current_user %>
           <%= link_to I18n.t("button.edit") , edit_plan_plan_item_path(id: item.id , plan_id: item.plan_id) , class: "button_base button_info" %>
         <% end %>
         <% if item.plan.user == current_user || item.user == current_user %>
           <%= link_to I18n.t("button.destroy")  , plan_plan_item_path(id: item.id , plan_id: item.plan_id) , method: :delete , class: "button_base button_warning"%>
-        <% end %>    
+        <% end %>
       </div>
     </div>
   <% end %>
