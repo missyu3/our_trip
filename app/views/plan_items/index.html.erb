@@ -8,7 +8,7 @@
   <% @plan_item.each do |item| %>
     <div class="list_margin frame">
       <div class="list_title">
-        <i><%= image_tag(choose_category_image(item) , class: "list_title_icon") %></i>
+        <i><%= image_tag(choose_category_image(item) , class: "list_icon") %></i>
         <%= link_to item.title, plan_plan_item_path(id: item.id , plan_id: item.plan_id)  %>
       </div>
       <hr>

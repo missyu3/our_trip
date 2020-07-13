@@ -1,0 +1,47 @@
+.comment_window{
+  max-height: 500px;
+  overflow: scroll;
+}
+
+.comment_box {
+  position: relative;
+}
+
+.comment_user {
+  position: absolute;
+  top: 3px
+}
+
+.comment_base {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0 1.5em 15px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 80%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  top: 15px;
+  left: 20px;
+}
+
+.comment_base:before {
+  content: "";
+  position: absolute;
+  top: 3px; 
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #e0edff;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.comment_base p {
+  margin: 0;
+  padding: 0;
+}
+
+nav.pagination {
+  display: none;
+}

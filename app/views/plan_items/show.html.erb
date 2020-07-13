@@ -22,4 +22,8 @@
       </div>
     <% end %>
   </div>
+  <div id="comments_area">
+    <%= render partial: "comments/index", locals: { comments: @comments  } %>
+  </div>
+  <%= render partial: "comments/form", locals: { plan_item: @plan_item, comment: @comment } %>
 </div>

@@ -1,0 +1,8 @@
+<%= form_with(model: comment, url: plan_plan_item_comments_path(plan_id: plan_item.plan_id,plan_item_id: plan_item.id),method: :post) do |form| %>
+  <div class="field">
+    <%= form.text_area :content,  placeholder: "コメント", class: "textarea"%>
+  </div>
+  <div class="actions">
+    <%= form.submit "コメント" %>
+  </div>
+<% end %>
