@@ -1,19 +1,17 @@
-<div class="frame list_margin">
-  <div class="comment_window jscroll">
+
+<div class="comment_window">
   <% comments.each do |comment| %>
-    <% if comment.present? %>
-      <div class="comment_box">
-        <div class="comment_user">
+    <div class="comment_box">
+      <div class="comment_user">
         <i><%= image_tag(chose_user_icon(comment.user) , class: "list_icon") %></i>
         <%= comment.user.name %>
         <%= format_comment_time(comment.created_at) %>
-        </div>
-        <div class="comment_base">
-          <%= comment.content %>
-        </div>
       </div>
-    <% end %>
+      <div class="comment_base">
+        <%= comment.content %>
+      </div>
+    </div>
   <% end %>
-  <%= paginate comments %>
-  </div>
+<%= paginate comments %>
 </div>
+
