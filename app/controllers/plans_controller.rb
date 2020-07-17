@@ -30,7 +30,9 @@ class PlansController < ApplicationController
     @plan = Plan.all.order_by_updated_before
   end
 
-  def show; end
+  def show
+    @schedules = Schedule.where(plan_id: @plan.id).includes(plan_item: :user).order(position: "ASC")
+  end
 
   def destroy
     @plan.destroy
@@ -47,11 +49,7 @@ class PlansController < ApplicationController
   def add
     @plan = Plan.find(params[:id])
     position = params[:to].to_i + 1
-    if @plan.schedule.create(plan_item_id: params[:evt_id].to_i, position: position)
-
-    else
-      binding.irb
-    end
+    @plan.schedule.create(plan_item_id: params[:evt_id].to_i, position: position)
   end
 
   def remove
