@@ -55,3 +55,4 @@ gem 'mini_magick'
 gem 'mini_racer', platforms: :ruby
 gem 'rails-i18n', '~> 5.1'
 gem 'unicorn'
+gem 'kaminari'

@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :plans, dependent: :destroy
   has_many :plan_items, dependent: :destroy
   has_many :participants, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :name, uniqueness: true
   validates :email, uniqueness: true

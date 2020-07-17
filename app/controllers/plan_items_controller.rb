@@ -28,7 +28,10 @@ class PlanItemsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+    @comments = Comment.get_comments_by_kaminari(@plan_item.id,params[:page])
+  end
 
   def index
     @plan_item = @plan.plan_items.order_by_updated_before

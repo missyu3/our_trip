@@ -13,6 +13,8 @@ ja:
     plan_item_title: 旅行項目
     schedule: スケジュール
     plan_items: 項目一覧
+    content: 概要
+    create_user: 作成者
   button:
     menu: メニュー
     back: 戻る
@@ -29,6 +31,7 @@ ja:
     schedule_new: スケジュール作成
     schedule_show: スケジュール表示
     add_member: メンバー追加
+    add_comment: コメントする
   message:
     welcome_user: "ようこそ{name}さん"
     make_a_travel_plan: "みんなで旅行計画を作成しよう！"
@@ -36,9 +39,9 @@ ja:
     please_create_plan_item: 旅行項目を先に作成してください。
     login_gest_user: ゲストユーザーとしてログインしました。
     participation_user_name: 参加させたいユーザーの名前を入力してください。
+    please_write_comment: コメントを入力してください。
   enum:
     category:
-      nothing: ""
       move: 移動
       activity: アクティビティ
       meal: 食事
