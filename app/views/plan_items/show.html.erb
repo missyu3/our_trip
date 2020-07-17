@@ -4,11 +4,11 @@
     <hr>
     <table class="table table-borderd">
       <tr>
-        <th>概要</th>
+        <th><%= I18n.t("title.content") %></th>
         <td class="text-left"><%= simple_format(@plan_item.content) %></td>
       </tr>
       <tr>
-        <th>作成者</th>
+        <th><%= I18n.t("title.create_user") %></th>
         <td class="text-left"><%= @plan_item.user.name %></td>
       </tr>
     </table>
@@ -23,7 +23,9 @@
     <% end %>
   </div>
   <div id="comments_area">
-    <%= render partial: "comments/index", locals: { comments: @comments  } %>
+    <div class="frame list_margin">
+        <%= render partial: "comments/index", locals: { comments: @comments  } %>
+    </div>
   </div>
   <%= render partial: "comments/form", locals: { plan_item: @plan_item, comment: @comment } %>
 </div>
