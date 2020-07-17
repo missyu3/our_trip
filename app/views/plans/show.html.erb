@@ -34,7 +34,7 @@
           <%= link_to I18n.t("button.plan_item_index") , plan_plan_items_path(@plan) , class: "button_base button_info" %>
         </div>
       </div>
-      <% @plan.schedule.each do |item| %>
+      <% @schedules.each do |item| %>
         <div class="list_margin frame list_index_box"> 
         <div class="list_index"><%= item.position %></div>
           <div class="list_title">

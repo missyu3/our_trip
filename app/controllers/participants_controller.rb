@@ -2,9 +2,9 @@
 
 class ParticipantsController < ApplicationController
   def index
-    @participant = Participant.new
     @plan = Plan.find(params[:plan_id])
-    @participants = @plan.participants
+    @participant = Participant.new
+    @participants = Participant.where(plan_id: @plan.id).includes(:user) 
   end
 
   def create

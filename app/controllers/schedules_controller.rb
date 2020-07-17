@@ -5,8 +5,8 @@ class SchedulesController < ApplicationController
   before_action :find_plan
 
   def index
-    @schedule = @plan.schedule
-    @plan_item = @plan.plan_items.where_not_include_schedule(@schedule)
+    @schedule = @plan.schedule.includes(plan_item: :user).order(position: "ASC")
+    @plan_item = @plan.plan_items.where_not_include_schedule(@schedule).includes(:user)
   end
 
   def sort

@@ -34,7 +34,7 @@ class PlanItemsController < ApplicationController
   end
 
   def index
-    @plan_item = @plan.plan_items.order_by_updated_before
+    @plan_item = @plan.plan_items.includes(:user).order_by_updated_before
   end
 
   def destroy
