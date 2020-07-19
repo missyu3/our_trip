@@ -27,11 +27,11 @@ class PlansController < ApplicationController
   end
 
   def index
-    @plan = Plan.all.order_by_updated_before
+    @plan = Plan.all.order_by_updated_before.page(params[:page]).per(KAMINARI_PER)
   end
 
   def show
-    @schedules = Schedule.where(plan_id: @plan.id).includes(plan_item: :user).order(position: "ASC")
+    @schedules = Schedule.where(plan_id: @plan.id).includes(plan_item: :user).order(position: "ASC").page(params[:page]).per(KAMINARI_PER)
   end
 
   def destroy
