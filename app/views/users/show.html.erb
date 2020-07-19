@@ -26,7 +26,7 @@
             <%= link_to I18n.t("button.plan_new"), new_plan_path, class: "button_base button_info" %>
           </div>
         </div>
-        <% @user.plans.each do |plan| %>
+        <% @plans.each do |plan| %>
           <div class="list_margin frame">
             <div class="list_box">
               <%= image_tag chose_plan_image(plan), class: "list_img" %>
@@ -41,6 +41,7 @@
             </div>
           </div>
         <% end %>
+        <%= paginate @plans %>
       </div>
     </div>
   </div>
