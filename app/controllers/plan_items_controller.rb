@@ -34,7 +34,7 @@ class PlanItemsController < ApplicationController
   end
 
   def index
-    @plan_item = @plan.plan_items.includes(:user).order_by_updated_before
+    @plan_item = @plan.plan_items.includes(:user).order_by_updated_before.page(params[:page]).per(KAMINARI_PER)
   end
 
   def destroy
