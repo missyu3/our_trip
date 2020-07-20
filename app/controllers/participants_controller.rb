@@ -4,7 +4,7 @@ class ParticipantsController < ApplicationController
   def index
     @plan = Plan.find(params[:plan_id])
     @participant = Participant.new
-    @participants = Participant.where(plan_id: @plan.id).includes(:user) 
+    @participants = Participant.where(plan_id: @plan.id).includes(:user).page(params[:page]).per(KAMINARI_PER)
   end
 
   def create

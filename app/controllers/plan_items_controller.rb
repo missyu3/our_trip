@@ -30,11 +30,11 @@ class PlanItemsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = Comment.get_comments_by_kaminari(@plan_item.id,params[:page])
+    @comments = Comment.get_comments_for_plan_item(@plan_item.id).page(params[:page]).per(KAMINARI_PER)
   end
 
   def index
-    @plan_item = @plan.plan_items.includes(:user).order_by_updated_before
+    @plan_item = @plan.plan_items.includes(:user).order_by_updated_before.page(params[:page]).per(KAMINARI_PER)
   end
 
   def destroy
