@@ -3,7 +3,7 @@
 module PlansHelper
   def chose_plan_image(plan)
     if plan.image.present?
-      user.image.url
+      plan.image.url
     else
       'travel.jpg'
     end
