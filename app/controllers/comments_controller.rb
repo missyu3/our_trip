@@ -8,14 +8,14 @@ class CommentsController < ApplicationController
     comment.user_id = current_user.id
     respond_to do |format|
       comment.save
-      @comments = Comment.get_comments_by_kaminari(@plan_item.id,params[:page])
+      @comments = Comment.get_comments_for_plan_item(@plan_item.id).page(params[:page]).per(KAMINARI_PER)
       format.js { render :index }
     end
   end
 
   def index
     respond_to do |format|
-      @comments = Comment.get_comments_by_kaminari(@plan_item.id,params[:page])
+      @comments = Comment.get_comments_for_plan_item(@plan_item.id).page(params[:page]).per(KAMINARI_PER)
       format.js { render :index }
     end
   end

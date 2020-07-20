@@ -30,7 +30,7 @@ class PlanItemsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = Comment.get_comments_by_kaminari(@plan_item.id,params[:page])
+    @comments = Comment.get_comments_for_plan_item(@plan_item.id).page(params[:page]).per(KAMINARI_PER)
   end
 
   def index
