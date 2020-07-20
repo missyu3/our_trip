@@ -39,25 +39,6 @@ class PlansController < ApplicationController
     redirect_to plans_path
   end
 
-  def sort
-    @plan = Plan.find(params[:id])
-    # fromはドラッグ前の位置、toはドラッグ後の位置
-    schedule = @plan.schedule[params[:from].to_i]
-    schedule.insert_at(params[:to].to_i + 1)
-  end
-
-  def add
-    @plan = Plan.find(params[:id])
-    position = params[:to].to_i + 1
-    @plan.schedule.create(plan_item_id: params[:evt_id].to_i, position: position)
-  end
-
-  def remove
-    @plan = Plan.find(params[:id])
-    schedule = @plan.schedule[params[:from].to_i]
-    schedule.destroy
-  end
-
   private
 
   def find_params
