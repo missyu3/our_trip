@@ -15,7 +15,7 @@
       <div class="list_content"><%= simple_format(item.content) %></div>
       <div class="list_right"><%= item.user.name %></div>
       <div class="button_wrapper">
-        <% if item.plan.user == current_user %>
+        <% if item.user == current_user %>
           <%= link_to I18n.t("button.edit") , edit_plan_plan_item_path(id: item.id , plan_id: item.plan_id) , class: "button_base button_info" %>
         <% end %>
         <% if item.plan.user == current_user || item.user == current_user %>
