@@ -53,7 +53,7 @@ class PlanItemsController < ApplicationController
   end
 
   def participant_required
-    unless @plan.user == current_user || @plan.participants.pluck(:id).include?(current_user.id)
+    unless @plan.user == current_user || @plan.participants.pluck(:user_id).include?(current_user.id)
       redirect_to plan_plan_items_path(plan_id: @plan.id)
     end
   end
