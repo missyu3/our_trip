@@ -1,21 +1,26 @@
 .top-box{
   position: relative;
+}
 
+.top-img-box {
+  margin-right: auto;
+  margin-left : auto;
 }
 
 .top-img {
-  width: 100%;
+  width: Auto;
   height: Auto;
-  max-height: 800px;
+  max-height: 600px;
   object-fit: cover; 
-  margin: 0px;
+  margin-right: auto;
+  margin-left : auto;
   padding: 0px;
 }
 
 .top-title-message{
   position: absolute;
   top: 20%;
-  right: 10%;
+  right: 15%;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   color: white;
@@ -27,4 +32,40 @@
   left: 50%;
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
+}
+
+.our_trip_value {
+  margin: 40px;
+  margin-top: 80px;
+  text-align: center;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.our_trip_value_item {
+  margin: 20px;
+  text-align: center;
+  object-fit: cover;
+}
+
+.our_trip_item_box {
+  margin-right: auto;
+  margin-left : auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-bottom:double;
+  border-color: #2e2c2c;
+  border-width:3px;
+  text-align: center;
+}
+
+.our_trip_item_image{
+  display: inline-block;
+  max-height: 300px;
+}
+
+.our_trip_item {
+  display: inline-block;
+  margin-right: 5%;
+  margin-left : 5%;
 }
