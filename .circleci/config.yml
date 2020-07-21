@@ -5,12 +5,10 @@ jobs:
       - image: circleci/ruby:2.6.5-node-browsers-legacy
         environment:
           RAILS_ENV: test
-          POSTGRES_USER: postgres
-          POSTGRES_DB: our_trip_test
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_HOST: 127.0.0.1
       - image: circleci/postgres
         environment:
-          POSTGRES_HOST: 127.0.0.1
+          POSTGRES_PASSWORD: postgres
     working_directory: ~/our_trip
     steps:
       - checkout
@@ -24,7 +22,7 @@ jobs:
       - save_cache:
           paths:
             - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}q
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
       - run:
