@@ -16,10 +16,14 @@ class ParticipantsController < ApplicationController
   def destroy
     plan = Plan.find_by(id: params[:plan_id])
     participant = Participant.find_by(id: params[:id])
-    if participant.destroy
-      flash[:notice] = 'ユーザーを削除しました。'
+    if participant.user == plan.user
+      flash[:notice] = '管理者は削除できません'
     else
-      flash[:alert] = 'ユーザーの削除に失敗しました。'
+      if participant.destroy
+        flash[:notice] = 'ユーザーを削除しました。'
+      else
+        flash[:alert] = 'ユーザーの削除に失敗しました。'
+      end
     end
     redirect_to plan_participants_path(plan)
   end
