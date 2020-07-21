@@ -107,6 +107,10 @@ RSpec.describe 'plan', type: :system do
         click_on 'メンバー追加'
         expect(current_path).to eq plan_participants_path(plan_id: plan1.id)
       end
+      it 'メンバー追加画面に管理者の名前が表示されているか' do
+        click_on 'メンバー追加'
+        expect(page).to have_content user_test.name
+      end
     end
     context 'スケジュール作成ボタンを押下した時、スケジュール作成画面に遷移しているか' do
       let(:plan1) { create(:plan, name: '北海道', user_id: user_test.id) }
