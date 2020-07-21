@@ -6,9 +6,6 @@ version: 2
 jobs:
   rubocop:
     docker:
-      - run:
-        command: |
-          echo DATABASE_PASSWORD=${DATABASE_PASSWORD} > ~/.env
       - image: circleci/ruby:2.6.5-node-browsers-legacy
         environment:
           RAILS_ENV: test
