@@ -9,6 +9,8 @@ class PlansController < ApplicationController
 
   def create
     @plan = current_user.plans.new(plan_params)
+    participant = @plan.participants.build
+    participant.user_id = current_user.id
     if @plan.save
       redirect_to plans_path
     else
