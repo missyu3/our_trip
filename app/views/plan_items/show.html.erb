@@ -15,7 +15,7 @@
     <hr>
     <% if @plan_item.plan.user == current_user || @plan_item.user == current_user %>
       <div class="button_wrapper">
-        <% if @plan_item.plan.user == current_user %>
+        <% if @plan_item.user == current_user %>
           <%= link_to I18n.t("button.edit") , edit_plan_plan_item_path(id: @plan_item.id , plan_id: @plan_item.plan_id) , class: "button_base button_info" %>
         <% end %>
         <%= link_to I18n.t("button.destroy")  , plan_plan_item_path(id: @plan_item.id , plan_id: @plan_item.plan_id) , method: :delete , class: "button_base button_warning"%>
