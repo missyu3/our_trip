@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+gest_user = User.find_or_create_by!(name: 'gest_user', email: 'guest@example.com') do |user|
+  user.password = SecureRandom.urlsafe_base64
+end
+
 user1 = User.create(
   name: 'test_user1',
   email: 'test1@example.com',
@@ -17,13 +21,13 @@ user2 = User.create(
 plan1 = Plan.create(
   name: '北海道',
   content: '新鮮な旬の魚介を食べあるく、食べ歩きの旅です！',
-  user_id: user1.id
+  user_id: gest_user.id
 )
 
 plan2 = Plan.create(
   name: '青森',
   content: '7、8月はねぶた祭で決まり！ルールさえ守れば、祭りに参加できる！！',
-  user_id: user1.id
+  user_id: gest_user.id
 )
 
 plan3 = Plan.create(
@@ -54,29 +58,29 @@ plan7 = Plan.create(id: 7,
                     user_id: user2.id)
 
 # nothing: 0, move: 1, activity: 2, meal: 3, lodging: 4
-PlanItem.create(plan_id: plan1.id,
+plan_item1 = PlanItem.create(plan_id: plan1.id,
                 title: '新千歳空港',
                 category: 1,
                 content: '飛行機で札幌空港に降り立つ。今日から美食づくしだ！',
-                user_id: user1.id)
+                user_id: gest_user.id)
 
-PlanItem.create(plan_id: plan1.id,
+plan_item2 = PlanItem.create(plan_id: plan1.id,
                 title: 'むらかみ',
                 category: 3,
                 content: '海胆加工会社直送の美味しいウニが味わえる',
                 user_id: user1.id)
 
-PlanItem.create(plan_id: plan1.id,
+plan_item3 = PlanItem.create(plan_id: plan1.id,
                 title: '開陽亭',
                 category: 3,
                 content: '活け蟹！新鮮な毛蟹のお刺身を食べよう！',
-                user_id: user1.id)
+                user_id: gest_user.id)
 
-PlanItem.create(plan_id: plan1.id,
+plan_item4 = PlanItem.create(plan_id: plan1.id,
                 title: 'クルージング',
                 category: 2,
                 content: '支笏湖でのクルージング、透明度の高い湖でのクルージングは体験する価値あり！',
-                user_id: user1.id)
+                user_id: user2.id)
 
 PlanItem.create(plan_id: plan1.id,
                 title: 'ワカサギ釣り',
@@ -88,7 +92,7 @@ PlanItem.create(plan_id: plan1.id,
                 title: 'JRタワーホテル日航札幌',
                 category: 2,
                 content: 'JR札幌駅直結！美味しいお食事と天然温泉のスパで疲れを癒そう！',
-                user_id: user1.id)
+                user_id: user2.id)
 
 PlanItem.create(plan_id: plan2.id,
                 title: 'センチュリーロイヤルホテル',
@@ -100,19 +104,19 @@ PlanItem.create(plan_id: plan2.id,
                 title: '青森空港',
                 category: 1,
                 content: '飛行機で青森空港に降り立つ。',
-                user_id: user1.id)
+                user_id: gest_user.id)
 
 PlanItem.create(plan_id: plan2.id,
                 title: 'みなと食堂',
                 category: 3,
                 content: '平目漬け丼とせんべい汁セットが絶品',
-                user_id: user2.id)
+                user_id: gest_user.id)
 
 PlanItem.create(plan_id: plan2.id,
                 title: '八食市場寿司',
                 category: 3,
                 content: '一度は食べてみよう、いちご煮（ウニとアワビのお吸い物です）',
-                user_id: user2.id)
+                user_id: gest_user.id)
 
 PlanItem.create(plan_id: plan2.id,
                 title: 'グリランド',
@@ -124,7 +128,7 @@ PlanItem.create(plan_id: plan2.id,
                 title: 'ねぶた祭',
                 category: 2,
                 content: '圧巻のパフォーマンスと自由参加の祭り！',
-                user_id: user2.id)
+                user_id: gest_user.id)
 
 PlanItem.create(plan_id: plan2.id,
                 title: '星野リゾート 青森屋',
@@ -305,3 +309,30 @@ PlanItem.create(plan_id: plan7.id,
                 category: 4,
                 content: 'ハワイで100年以上続く老舗が沖縄にオープン！窓から見える透明度の高い海に魅了されます',
                 user_id: user1.id)
+
+Participant.create(plan_id: plan1.id,user_id: gest_user.id)
+Participant.create(plan_id: plan1.id,user_id: user1.id)
+Participant.create(plan_id: plan1.id,user_id: user2.id)
+Participant.create(plan_id: plan2.id,user_id: gest_user.id)
+Participant.create(plan_id: plan2.id,user_id: user1.id)
+Participant.create(plan_id: plan2.id,user_id: user2.id)
+Participant.create(plan_id: plan3.id,user_id: gest_user.id)
+Participant.create(plan_id: plan3.id,user_id: user1.id)
+Participant.create(plan_id: plan3.id,user_id: user2.id)
+Participant.create(plan_id: plan4.id,user_id: gest_user.id)
+Participant.create(plan_id: plan4.id,user_id: user1.id)
+Participant.create(plan_id: plan4.id,user_id: user2.id)
+Participant.create(plan_id: plan5.id,user_id: gest_user.id)
+Participant.create(plan_id: plan5.id,user_id: user1.id)
+Participant.create(plan_id: plan5.id,user_id: user2.id)
+Participant.create(plan_id: plan6.id,user_id: gest_user.id)
+Participant.create(plan_id: plan6.id,user_id: user1.id)
+Participant.create(plan_id: plan6.id,user_id: user2.id)
+Participant.create(plan_id: plan7.id,user_id: gest_user.id)
+Participant.create(plan_id: plan7.id,user_id: user1.id)
+Participant.create(plan_id: plan7.id,user_id: user2.id)
+
+Schedule.create(plan_id: plan1.id , plan_item_id: plan_item1.id , position: 1)
+Schedule.create(plan_id: plan1.id , plan_item_id: plan_item3.id , position: 2)
+Schedule.create(plan_id: plan1.id , plan_item_id: plan_item4.id , position: 3)
+Schedule.create(plan_id: plan1.id , plan_item_id: plan_item2.id , position: 4)
