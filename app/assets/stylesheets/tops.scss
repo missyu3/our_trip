@@ -3,24 +3,22 @@
 }
 
 .top-img-box {
-  margin-right: auto;
-  margin-left : auto;
+  margin: auto;
+  text-align: center;
 }
 
 .top-img {
   width: Auto;
   height: Auto;
   max-height: 600px;
-  object-fit: cover; 
   margin-right: auto;
   margin-left : auto;
-  padding: 0px;
 }
 
 .top-title-message{
   position: absolute;
   top: 20%;
-  right: 15%;
+  right: 20%;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   color: white;
@@ -51,6 +49,8 @@
 .our_trip_item_box {
   margin-right: auto;
   margin-left : auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding-top: 40px;
   padding-bottom: 40px;
   border-bottom:double;
