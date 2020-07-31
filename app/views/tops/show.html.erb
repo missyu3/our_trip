@@ -49,7 +49,12 @@
     <div class="our_trip_item">スケジュールを組み立てます。</div>
     <%= image_tag "our_trip_item_4.png", class: "our_trip_item_image" %>
   </div>
-  <div class="our_trip_value">
-    旅行に行きましょう！
+  <div class="frame button_wrapper">
+    <% unless current_user %>
+      <%= link_to "新規登録", new_user_registration_path, class: "button_base button_info" %>
+      <%= link_to "ログイン", new_user_session_path, class: "button_base button_info" %>
+    <% else %>
+      <%= link_to I18n.t("button.my_page"), user_path(current_user.id) , class: "button_base button_info" %>
+    <% end %>
   </div>
 </div>
