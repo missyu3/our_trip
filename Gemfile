@@ -58,3 +58,5 @@ gem 'mini_racer', platforms: :ruby
 gem 'rails-i18n', '~> 5.1'
 gem 'unicorn'
 gem 'kaminari'
+gem 'aws-sdk-rails'
+
