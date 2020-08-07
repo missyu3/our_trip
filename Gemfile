@@ -37,6 +37,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
   gem 'bullet'
+  gem 'letter_opener_web'
 end
 
 group :test do
@@ -57,3 +58,5 @@ gem 'mini_racer', platforms: :ruby
 gem 'rails-i18n', '~> 5.1'
 gem 'unicorn'
 gem 'kaminari'
+gem 'aws-sdk-rails'
+
