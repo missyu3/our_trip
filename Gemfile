@@ -17,7 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'capistrano', '3.6.0'
+  gem 'capistrano', '3.14.1'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
@@ -37,7 +37,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
   gem 'bullet'
-  gem 'letter_opener_web'
 end
 
 group :test do
