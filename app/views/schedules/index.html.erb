@@ -20,6 +20,7 @@
                 <h1 class="card_title"><%= item.plan_item.title %></h1>
                 <hr>
                 <div class="card_text"><%= truncate(simple_format(item.plan_item.content), length: 100) %></div>
+                <div class="list_right"><%= number_to_currency(item.plan_item.budget) %></div>
                 <div class="list_right"><%= item.plan_item.user.name %></div>
                 <div class="list_right"><%= I18n.l(item.plan_item.updated_at, format: :long) %></div>
               </div>
@@ -37,6 +38,7 @@
                 <h1 class="card_title"><%= item.title %></h1>
                 <hr>
                 <div class="card_text"><%= simple_format(item.content) %></div>
+                <div class="list_right"><%= number_to_currency(item.budget) %></div>
                 <div class="list_right"><%= item.user.name %></div>
                 <div class="list_right"><%= I18n.l(item.updated_at, format: :long) %></div>
               </div>

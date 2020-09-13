@@ -59,6 +59,6 @@ class PlanItemsController < ApplicationController
   end
 
   def plan_item_params
-    params.require(:plan_item).permit(:plan_id, :title, :category, :content)
+    params.require(:plan_item).permit(:plan_id, :title, :category,:budget , :content)
   end
 end
