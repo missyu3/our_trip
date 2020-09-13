@@ -15,6 +15,7 @@ ja:
     plan_items: 項目一覧
     content: 概要
     create_user: 作成者
+    budget: 予算
   button:
     menu: メニュー
     back: 戻る
@@ -33,9 +34,9 @@ ja:
     add_member: メンバー追加
     add_comment: コメントする
   message:
-    welcome_user: "ようこそ{name}さん"
-    make_a_travel_plan: "みんなで旅行計画を作成しよう！"
-    app_explanation: "OurTripはみんなで旅行計画を作ることをサポートします。旅行計画を出し合って、スケジュールの作成が行えます。"
+    welcome_user: 'ようこそ{name}さん'
+    make_a_travel_plan: 'みんなで旅行計画を作成しよう！'
+    app_explanation: 'OurTripはみんなで旅行計画を作ることをサポートします。旅行計画を出し合って、スケジュールの作成が行えます。'
     please_create_plan_item: 旅行項目を先に作成してください。
     login_gest_user: ゲストユーザーとしてログインしました。
     participation_user_name: 参加させたいユーザーの名前を入力してください。
@@ -46,3 +47,13 @@ ja:
       activity: アクティビティ
       meal: 食事
       lodging: 宿泊
+  number:
+    currency:
+      format:
+        delimiter: ','
+        format: '%n%u'
+        precision: 0
+        separator: '.'
+        significant: false
+        strip_insignificant_zeros: false
+        unit: 円

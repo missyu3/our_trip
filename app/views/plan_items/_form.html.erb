@@ -10,6 +10,10 @@
       <%= f.select :category , PlanItem.categories.map{ |key,value| [I18n.t("enum.category.#{key}"), key]  } , {include_blank: true} , { class: "form-control" } %>
     </div>
     <div class="row margin_controler">
+      <%= f.label :budget %>
+      <%= f.number_field :budget,{min: 0,max: 1000000 , class: "form-control" } %>
+    </div>
+    <div class="row margin_controler">
       <%= f.label :content %> 
       <%= f.text_area :content, { class: "form-control" } %>
     </div>

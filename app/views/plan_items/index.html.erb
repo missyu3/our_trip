@@ -13,6 +13,9 @@
       </div>
       <hr>
       <div class="list_content"><%= simple_format(item.content) %></div>
+      <% if item.budget.present? %>
+        <div class="list_right"><%= I18n.t("title.budget") + " : " + number_to_currency(item.budget) %></div>
+      <% end %>
       <div class="list_right"><%= item.user.name %></div>
       <div class="button_wrapper">
         <% if item.user == current_user %>

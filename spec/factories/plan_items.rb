@@ -7,5 +7,6 @@ FactoryBot.define do
     category { 3 }
     content { 'お寿司、海胆' }
     user_id { 1 }
+    budget { 100 }
   end
 end

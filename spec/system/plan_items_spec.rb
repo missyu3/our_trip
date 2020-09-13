@@ -20,11 +20,13 @@ RSpec.describe 'plan_item', type: :system do
         fill_in 'タイトル', with: '札幌'
         select '食事', from: 'カテゴリー'
         fill_in '概要', with: '味噌ラーメン'
+        fill_in '予算', with: '2300'
         click_button '登録する'
       end
       it '作成が成功すること' do
         expect(page).to have_content '札幌'
         expect(page).to have_content '味噌ラーメン'
+        expect(page).to have_content '2,300'
       end
     end
     context '更新' do
@@ -36,6 +38,7 @@ RSpec.describe 'plan_item', type: :system do
         click_on '編集'
         fill_in 'タイトル', with: '東京'
         select '移動', from: 'カテゴリー'
+        fill_in '予算', with: '9999'
         fill_in '概要', with: '東京メトロ'
         click_button '更新する'
       end
@@ -44,6 +47,7 @@ RSpec.describe 'plan_item', type: :system do
         expect(page).to have_content '東京メトロ'
         expect(page).to_not have_content '函館'
         expect(page).to_not have_content 'お寿司、海胆'
+        expect(page).to have_content '9,999'
       end
     end
     context '削除' do

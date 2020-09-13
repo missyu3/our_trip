@@ -11,6 +11,10 @@
         <th><%= I18n.t("title.create_user") %></th>
         <td class="text-left"><%= @plan_item.user.name %></td>
       </tr>
+      <tr>
+        <th><%= I18n.t("title.budget") %></th>
+        <td class="text-left"><%= number_to_currency(@plan_item.budget) %></td>
+      </tr>
     </table>
     <hr>
     <% if @plan_item.plan.user == current_user || @plan_item.user == current_user %>
