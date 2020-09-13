@@ -74,9 +74,9 @@ RSpec.describe 'plan', type: :system do
     context 'スケジュールが表示されているか' do
       let(:plan1) { create(:plan, name: '北海道', user_id: user_test.id) }
       before do
-        item1 = create(:plan_item, user_id: user_test.id, plan_id: plan1.id) 
-        item2 = create(:plan_item, user_id: user_test.id, plan_id: plan1.id, title: '沖縄', content: '豚足') 
-        item3 = create(:plan_item, user_id: user_test.id, plan_id: plan1.id, title: '金沢', content: '海鮮') 
+        item1 = create(:plan_item, user_id: user_test.id, plan_id: plan1.id, budget: 1000)
+        item2 = create(:plan_item, user_id: user_test.id, plan_id: plan1.id, title: '沖縄', content: '豚足', budget: 2000) 
+        item3 = create(:plan_item, user_id: user_test.id, plan_id: plan1.id, title: '金沢', content: '海鮮', budget: 3500) 
         create(:schedule, plan_id: plan1.id, plan_item_id: item1.id) 
         create(:schedule, plan_id: plan1.id, plan_item_id: item3.id) 
         create(:schedule, plan_id: plan1.id, plan_item_id: item2.id) 
@@ -86,6 +86,9 @@ RSpec.describe 'plan', type: :system do
         expect(page).to have_content '北海道'
         expect(page).to have_content '沖縄'
         expect(page).to have_content '金沢'
+      end
+      it 'スケジュールに表示されている旅行計画の合計値が表示されているか' do
+        expect(page).to have_content '6,500'
       end
     end
     context '編集ボタンを押下した時、旅行項目の編集画面に遷移しているか' do

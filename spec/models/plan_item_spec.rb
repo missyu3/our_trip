@@ -5,12 +5,29 @@ require 'rails_helper'
 RSpec.describe PlanItem, type: :model do
   let(:user_test) { create(:user) }
   let(:plan) { create(:plan, user_id: user_test.id) }
+  it 'データは過不足なく登録されているか' do
+    item = build(:plan_item, user_id: user_test.id, plan_id: plan.id)
+    expect(item.title).to eq "函館"
+    expect(item.category).to eq "meal"
+    expect(item.content).to eq 'お寿司、海胆'
+    expect(item.budget).to eq 100
+    expect(item.user_id).to eq user_test.id
+    expect(item.plan_id).to eq plan.id
+  end
   it 'titleが空の時、エラーが発生する' do
     item = build(:plan_item, title: '', user_id: user_test.id, plan_id: plan.id)
     expect(item).not_to be_valid
   end
   it 'contentが空の時、エラーが発生する' do
     item = build(:plan_item, content: '', user_id: user_test.id, plan_id: plan.id)
+    expect(item).not_to be_valid
+  end
+  it 'budgetが空の時、エラーが発生しない' do
+    item = build(:plan_item, user_id: user_test.id, plan_id: plan.id)
+    expect(item).to be_valid
+  end
+  it 'budgetがマイナスの時、エラーが発生する' do
+    item = build(:plan_item,budget: -1, user_id: user_test.id, plan_id: plan.id)
     expect(item).not_to be_valid
   end
   it 'データを削除した時、関連付けされているscheduleのデータが削除されるか' do

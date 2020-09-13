@@ -11,6 +11,7 @@ class PlanItem < ApplicationRecord
   validates :title, presence: true
   validates :category, presence: true
   validates :content, presence: true
+  validates :budget, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 
   scope :order_by_updated_before, -> { order(updated_at: :desc) }
   scope :where_not_include_schedule, ->(schedule) { where.not(id: schedule.to_a.map { |item| item[:plan_item_id] }) }
