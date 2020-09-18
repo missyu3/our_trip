@@ -14,11 +14,30 @@
       <%= f.number_field :budget,{min: 0,max: 1000000 , class: "form-control" } %>
     </div>
     <div class="row margin_controler">
+      <%= f.label :address %>
+      <div class="text_button_box">
+      <%= f.text_field :address, { class: "form-control text_button" ,id: "address"  }  %>
+      <input class="text_button" type="button" value="地点確認" onclick="codeAddress()">
+      </div>
+        <%= render "spots/show", plan_item: plan_item %>
+    </div>
+    <div class="row margin_controler">
       <%= f.label :content %> 
-      <%= f.text_area :content, { class: "form-control" } %>
+      <%= f.text_area :content, { class: "form-control"} %>
     </div>
     <div class="row margin_controler button_wrapper">
       <%= f.submit nil, { class: "button_base button_info" } %>
     </div>
   </div>
 <% end %>
+
+<style>
+#map {
+  height: 300px;
+  width: Auto;
+  margin: 10px
+}
+.text_button_box{
+  display:flex; 
+}
+</style>
