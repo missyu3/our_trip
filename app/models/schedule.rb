@@ -5,4 +5,6 @@ class Schedule < ApplicationRecord
   acts_as_list scope: :plan
   belongs_to :plan_item
   
+
+
 end
