@@ -1,5 +1,5 @@
 <div id='map' class='map-large-size'></div>
-
+<%= plan.schedules.first.plan_item.title %>
 <script type="text/javascript">
   let map
   let geocoder
@@ -14,26 +14,38 @@
       scrollwheel: true,
     });
 
-
-    var transitLayer = new google.maps.TransitLayer();
+    let transitLayer = new google.maps.TransitLayer();
     transitLayer.setMap(map);
     if (center_point !== null) {
       map.setCenter(center_point);
-      var index = 0
+      let index = 0
       let spot
+      let schedules_index
+      let plan_item_title
       <% plan.schedules.each do |place | %>
         <% next if place.plan_item.address.blank? %>
         spot = {lat: <%= place.plan_item.latitude %>, lng: <%= place.plan_item.longitude %>};
-        var contentString = <%= place.position %>;
+        schedules_index = <%= place.position %>;
+        plan_item_title =  '<%= place.plan_item.title %>'
+
         marker[index] = new google.maps.Marker({
           position: spot,
-          label: contentString.toString(),
+          label: schedules_index.toString(),
           map: map
         });
-        
+
+        attachMessage(marker[index], plan_item_title);
+
         ++index
       <% end %>
     }
+  }
+  function attachMessage(marker, msg) {
+    google.maps.event.addListener(marker, 'click', function(event) {
+      new google.maps.InfoWindow({
+        content: msg
+      }).open(marker.getMap(), marker);
+    });
   }
 </script>
 
