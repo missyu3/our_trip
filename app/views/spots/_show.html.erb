@@ -1,0 +1,43 @@
+<div id='map' class='map-medium-size'></div>
+
+<script>
+  let map
+  let marker
+  let geocoder
+  function initMap(){
+      geocoder = new google.maps.Geocoder()  
+      map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 13,
+      scaleControl: true,
+      scrollwheel: true,
+    });
+    <% if plan_item.address.present? %>
+      const spot = {lat: <%= plan_item.latitude %>, lng: <%= plan_item.longitude %>};
+      map.setCenter(spot);
+      marker = new google.maps.Marker({
+        position: spot,
+        map: map
+      });
+    <% end %>
+  }
+
+  function codeAddress(){
+    let inputAddress = document.getElementById('address').value;
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        if (marker !== undefined) {
+          marker.setMap(null);
+        }
+        marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('該当する結果がありませんでした');
+      }
+    });   
+  }
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"></script>

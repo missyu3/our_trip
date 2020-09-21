@@ -15,7 +15,12 @@
         <th><%= I18n.t("title.budget") %></th>
         <td class="text-left"><%= number_to_currency(@plan_item.budget) %></td>
       </tr>
+      <tr>
+        <th><%= I18n.t("title.address") %></th>
+        <td class="text-left"><%= @plan_item.address %></td>
+      </tr>
     </table>
+        <%= render "spots/show", plan_item: @plan_item %>
     <hr>
     <% if @plan_item.plan.user == current_user || @plan_item.user == current_user %>
       <div class="button_wrapper">

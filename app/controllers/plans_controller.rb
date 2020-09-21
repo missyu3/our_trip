@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PlansController < ApplicationController
-  before_action :find_params, only: %i[edit update show destroy]
+  before_action :find_params, only: %i[edit update destroy]
 
   def new
     @plan = Plan.new
@@ -33,7 +33,9 @@ class PlansController < ApplicationController
   end
 
   def show
+    @plan = Plan.where(id: params[:id]).includes(schedules: :plan_item).first
     @schedules = Schedule.where(plan_id: @plan.id).includes(plan_item: :user).order(position: "ASC").page(params[:page]).per(KAMINARI_PER)
+    @budget_sum = @schedules.pluck(:budget).compact.sum
   end
 
   def destroy

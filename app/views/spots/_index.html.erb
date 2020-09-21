@@ -1,0 +1,52 @@
+<div id='map' class='map-large-size'></div>
+<%= plan.schedules.first.plan_item.title %>
+<script type="text/javascript">
+  let map
+  let geocoder
+  const center_point = {lat: <%= plan.calculate_schedule_addresses_center_point[0] %>, lng: <%= plan.calculate_schedule_addresses_center_point[1] %>};
+  let marker = [];
+  let infoWindow = [];
+  function initMap(){
+      geocoder = new google.maps.Geocoder()  
+      map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 13,
+      scaleControl: true,
+      scrollwheel: true,
+    });
+
+    let transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+    if (center_point !== null) {
+      map.setCenter(center_point);
+      let index = 0
+      let spot
+      let schedules_index
+      let plan_item_title
+      <% plan.schedules.each do |place | %>
+        <% next if place.plan_item.address.blank? %>
+        spot = {lat: <%= place.plan_item.latitude %>, lng: <%= place.plan_item.longitude %>};
+        schedules_index = <%= place.position %>;
+        plan_item_title =  '<%= place.plan_item.title %>'
+
+        marker[index] = new google.maps.Marker({
+          position: spot,
+          label: schedules_index.toString(),
+          map: map
+        });
+
+        attachMessage(marker[index], plan_item_title);
+
+        ++index
+      <% end %>
+    }
+  }
+  function attachMessage(marker, msg) {
+    google.maps.event.addListener(marker, 'click', function(event) {
+      new google.maps.InfoWindow({
+        content: msg
+      }).open(marker.getMap(), marker);
+    });
+  }
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"></script>
