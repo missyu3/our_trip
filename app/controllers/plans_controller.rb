@@ -34,6 +34,7 @@ class PlansController < ApplicationController
 
   def show
     @plan = Plan.where(id: params[:id]).includes(schedules: :plan_item).first
+    @plan.set_geocoder_center_point
     @schedules = Schedule.where(plan_id: @plan.id).includes(plan_item: :user).order(position: "ASC").page(params[:page]).per(KAMINARI_PER)
     @budget_sum = @schedules.pluck(:budget).compact.sum
   end

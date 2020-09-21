@@ -12,12 +12,19 @@ class Plan < ApplicationRecord
 
   scope :order_by_updated_before, -> { order(updated_at: :desc) }
 
-  def calculate_schedule_addresses_center_point
+  attr_reader :geocoder_map_center_lat
+  attr_reader :geocoder_map_center_lng
+
+  def set_geocoder_center_point
     addresses = []
     self.schedules.each do |place|
       next if place.plan_item.address.blank?
       addresses.push(place.plan_item)
     end
-    addresses.any? ? Geocoder::Calculations.geographic_center(addresses) : nil
+    if addresses.any?
+      center = Geocoder::Calculations.geographic_center(addresses)
+      @geocoder_map_center_lat = center[0]
+      @geocoder_map_center_lng = center[1]
+    end
   end
 end

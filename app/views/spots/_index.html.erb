@@ -1,9 +1,8 @@
 <div id='map' class='map-large-size'></div>
-<%= plan.schedules.first.plan_item.title %>
 <script type="text/javascript">
   let map
   let geocoder
-  const center_point = {lat: <%= plan.calculate_schedule_addresses_center_point[0] %>, lng: <%= plan.calculate_schedule_addresses_center_point[1] %>};
+  const center_point = {lat: <%= plan.geocoder_map_center_lat %>, lng: <%= plan.geocoder_map_center_lng %>};
   let marker = [];
   let infoWindow = [];
   function initMap(){
@@ -16,7 +15,7 @@
 
     let transitLayer = new google.maps.TransitLayer();
     transitLayer.setMap(map);
-    if (center_point !== null) {
+    if (<%= plan.geocoder_map_center_lat %> !== null) {
       map.setCenter(center_point);
       let index = 0
       let spot
