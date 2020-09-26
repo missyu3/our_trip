@@ -49,6 +49,6 @@ RSpec.describe PlanItem, type: :model do
     item4 = create(:plan_item, updated_at: Time.current + 2.days, user_id: user_test.id, plan_id: plan.id)
     schedule1 = create(:schedule, plan_id: plan.id , plan_item_id: item1.id)
     schedule2 = create(:schedule, plan_id: plan.id , plan_item_id: item4.id)
-    expect(PlanItem.all.where_not_include_schedule(plan.schedule).map(&:id)).to eq [item2.id, item3.id]
+    expect(PlanItem.all.where_not_include_schedule(plan.schedules).map(&:id)).to eq [item2.id, item3.id]
   end
 end
