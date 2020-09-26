@@ -1,17 +1,23 @@
 <div id='map' class='map-large-size'></div>
 <script type="text/javascript">
   let map
+  let map_option
   let geocoder
   const center_point = {lat: <%= plan.geocoder_map_center_lat %>, lng: <%= plan.geocoder_map_center_lng %>};
+
+
   let marker = [];
   let infoWindow = [];
   function initMap(){
-      geocoder = new google.maps.Geocoder()  
-      map = new google.maps.Map(document.getElementById('map'), {
+    geocoder = new google.maps.Geocoder()  
+    map = new google.maps.Map(document.getElementById('map'), {
       zoom: 13,
+      maxZoom: 13 ,
       scaleControl: true,
       scrollwheel: true,
     });
+    
+
 
     let transitLayer = new google.maps.TransitLayer();
     transitLayer.setMap(map);
@@ -21,9 +27,17 @@
       let spot
       let schedules_index
       let plan_item_title
+      let minX = null
+      let minY = null
+      let maxX = null
+      let maxY = null
+      let lat
+      let lng
       <% plan.schedules.each do |place | %>
         <% next if place.plan_item.address.blank? %>
-        spot = {lat: <%= place.plan_item.latitude %>, lng: <%= place.plan_item.longitude %>};
+        lat = <%= place.plan_item.latitude %>
+        lng = <%= place.plan_item.longitude %>
+        spot = {lat: lat, lng: lng};
         schedules_index = <%= place.position %>;
         plan_item_title =  '<%= place.plan_item.title %>'
 
@@ -35,8 +49,17 @@
 
         attachMessage(marker[index], plan_item_title);
 
+        if (minX == null || lng <= minX){ minX = lng; }
+        if (maxX == null || lng > maxX){ maxX = lng; }
+        if (minY == null || lat <= minY){ minY = lat; }
+        if (maxY == null || lat > maxY){ maxY = lat; }
+
         ++index
       <% end %>
+      let sw = new google.maps.LatLng(maxY, minX);
+      let ne = new google.maps.LatLng(minY, maxX);
+      let bounds = new google.maps.LatLngBounds(sw, ne);
+      map.fitBounds(bounds);
     }
   }
   function attachMessage(marker, msg) {
@@ -45,6 +68,10 @@
         content: msg
       }).open(marker.getMap(), marker);
     });
+  }
+
+  function getZoomLevel(){
+
   }
 </script>
 
