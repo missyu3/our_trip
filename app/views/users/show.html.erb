@@ -7,41 +7,39 @@
         <% else %>
           <%= image_tag "human.png", class: "icon_image my_page_icon" %>
         <% end %>
+        <br>
         <div class="text-center" > 
           <%= @user.name %>
         </div>
-        <div class="text-center" > 
-          <%= @user.email %>
-        </div>
-        <hr>
-        <div class=""> 
-          <%= link_to I18n.t("button.edit"), edit_user_registration_path , class: "button_base button_info" %>
-        </div>
+        <br>
+        <% if @user == current_user %>
+          <hr>
+          <div class="button_wrapper"> 
+            <%= link_to I18n.t("button.edit"), edit_user_registration_path , class: "button_base button_info" %>
+              <%= link_to I18n.t("button.plan_new"), new_plan_path, class: "button_base button_info" %>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="col-sm-9 col-xs-12">
-      <div class="row list_margin"> 
-        <div class="frame">
-          <div class=" button_wrapper">
-            <%= link_to I18n.t("button.plan_new"), new_plan_path, class: "button_base button_info" %>
-          </div>
-        </div>
-        <% @plans.each do |plan| %>
+      <div class="list_margin"> 
+        <% @participants.each do |participant| %>
           <div class="list_margin frame">
             <div class="list_box">
-              <%= image_tag chose_plan_image(plan), class: "list_img" %>
+              <%= image_tag chose_plan_image(participant.plan), class: "list_img" %>
               <div class="list_image_with_content">
                 <div class="list_title">
-                  <%= link_to plan.name, plan_path(plan) %>
+                  <%= link_to participant.plan.name, plan_path(participant.plan) %>
                 </div>
                 <hr>
-                <div class="list_content"><%= simple_format(plan.content) %></div>
-                <div class="text-right"><%= plan.user.name %></div>
+                <div class="list_content"><%= simple_format(participant.plan.content) %></div>
+                <div class="text-right"><%= "作成者:#{participant.plan.user.name}" %></div>
+                <div class="text-right"><%= "作成日:#{format_comment_time(participant.plan.created_at)}" %></div>
               </div>
             </div>
           </div>
         <% end %>
-        <%= paginate @plans %>
+        <%= paginate @participants %>
       </div>
     </div>
   </div>
