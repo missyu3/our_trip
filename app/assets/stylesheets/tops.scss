@@ -1,4 +1,4 @@
-.top-box{
+.top-box {
   position: relative;
 }
 
@@ -12,10 +12,10 @@
   height: Auto;
   max-height: 600px;
   margin-right: auto;
-  margin-left : auto;
+  margin-left: auto;
 }
 
-.top-title-message{
+.top-title-message {
   position: absolute;
   top: 20%;
   right: 20%;
@@ -28,8 +28,8 @@
   position: absolute;
   top: 80%;
   left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .our_trip_value {
@@ -48,24 +48,24 @@
 
 .our_trip_item_box {
   margin-right: auto;
-  margin-left : auto;
+  margin-left: auto;
   margin-top: 20px;
   margin-bottom: 20px;
   padding-top: 40px;
   padding-bottom: 40px;
-  border-bottom:double;
+  border-bottom: double;
   border-color: #2e2c2c;
-  border-width:3px;
+  border-width: 3px;
   text-align: center;
 }
 
-.our_trip_item_image{
+.our_trip_item_image {
   display: inline-block;
-  max-height: 300px;
+  max-height: 250px;
 }
 
 .our_trip_item {
   display: inline-block;
   margin-right: 5%;
-  margin-left : 5%;
+  margin-left: 5%;
 }

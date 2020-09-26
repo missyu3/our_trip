@@ -32,7 +32,7 @@ ja:
     plan_item_new: 旅行項目追加
     schedule_new: スケジュール作成
     schedule_show: スケジュール表示
-    add_member: メンバー追加
+    member_index: メンバー一覧
     add_comment: コメントする
   message:
     welcome_user: 'ようこそ{name}さん'

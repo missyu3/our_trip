@@ -22,7 +22,7 @@ class SchedulesController < ApplicationController
   end
 
   def remove
-    schedule = @plan.schedule[params[:from].to_i]
+    schedule = @plan.schedules[params[:from].to_i]
     schedule.destroy
   end
 
