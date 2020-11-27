@@ -23,11 +23,16 @@ services:
       app_net:
         ipv4_address: 172.30.0.2
   db:
-    image: postgres
+    image: postgres:12.2
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432
+    networks:
+      app_net:
+        ipv4_address: 172.30.0.3
   chrome:
     image: selenium/standalone-chrome:latest
     ports:
