@@ -107,11 +107,11 @@ RSpec.describe 'plan', type: :system do
         visit plan_path(plan1.id)
       end
       it 'メンバー追加画面に遷移していること' do
-        click_on 'メンバー追加'
+        click_on 'メンバー一覧'
         expect(current_path).to eq plan_participants_path(plan_id: plan1.id)
       end
       it 'メンバー追加画面に管理者の名前が表示されているか' do
-        click_on 'メンバー追加'
+        click_on 'メンバー一覧'
         expect(page).to have_content user_test.name
       end
     end

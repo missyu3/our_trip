@@ -65,7 +65,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener
   #Docker環境を使用する際にホワイトリストを追加する必要がある。しかし、本番環境では不要なので、本番環境では設定を読み込まないようにunlessを追加。
   unless Rails.env.production?
-    config.web_console.whitelisted_ips = '172.19.0.1'
+    config.web_console.whitelisted_ips = '172.30.0.1'
   end
   config.after_initialize do
     Bullet.enable = true
