@@ -4,6 +4,7 @@ class PlanItem < ApplicationRecord
   belongs_to :plan
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :notifications, as: :event
   has_one :schedule, dependent: :destroy
 
   enum category: { move: 1, activity: 2, meal: 3, lodging: 4 }
