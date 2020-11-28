@@ -26,18 +26,17 @@ ActiveRecord::Schema.define(version: 2020_10_08_134656) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "visitor_id", null: false
-    t.integer "visited_id", null: false
-    t.integer "plan_item_id"
-    t.integer "comment_id"
-    t.integer "action", default: 0, null: false
+    t.bigint "notify_id"
+    t.bigint "notified_id"
+    t.string "event_type"
+    t.bigint "event_id"
+    t.integer "action"
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_notifications_on_comment_id"
-    t.index ["plan_item_id"], name: "index_notifications_on_plan_item_id"
-    t.index ["visited_id"], name: "index_notifications_on_visited_id"
-    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+    t.index ["event_type", "event_id"], name: "index_notifications_on_event_type_and_event_id"
+    t.index ["notified_id"], name: "index_notifications_on_notified_id"
+    t.index ["notify_id"], name: "index_notifications_on_notify_id"
   end
 
   create_table "participants", force: :cascade do |t|
@@ -102,6 +101,8 @@ ActiveRecord::Schema.define(version: 2020_10_08_134656) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "notifications", "users", column: "notified_id"
+  add_foreign_key "notifications", "users", column: "notify_id"
   add_foreign_key "participants", "plans"
   add_foreign_key "participants", "users"
   add_foreign_key "plan_items", "plans"
