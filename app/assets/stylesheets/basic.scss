@@ -12,9 +12,23 @@ header {
   width: 100%;
   padding: 0px;
   margin: 0px;
+  height: 50px;
   font-weight: bold;
-  z-index:9999;
-  padding-right: 20px;
+  z-index: 9999;
+  padding-right: 80px;
+  padding-left: 20px;
+  background: rgba(59, 70, 233, 0.4);
+  color: #eeeeee;
+  position: relative;
+}
+
+.header_title {
+  position: absolute;
+  font-size: x-large;
+  color: white;
+  top: 20%;
+  bottom: 0;
+  left: 20px;
 }
 
 footer {
@@ -53,12 +67,12 @@ hr {
   text-align: center;
 }
 
-.container{
+.container {
   max-width: 100%;
 }
 
 .hide {
-  display:none;
+  display: none;
 }
 
 .frame {
@@ -81,7 +95,7 @@ hr {
   margin: 5px auto;
 }
 
-#copyright{
+#copyright {
   position: absolute;
   bottom: 10px;
   right: 50%;

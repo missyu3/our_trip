@@ -10,28 +10,38 @@
   </head>
   <header>
     <nav class="nav">
-      <%= link_to I18n.t("title.app"), root_path, class: "navbar-brand"%>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-expanded="false">
-              <%= I18n.t("button.menu") %> <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <% if user_signed_in? %>
-                <li role="presentation"><%= link_to I18n.t("button.my_page"), user_path(current_user.id) %></li>
-                <li role="presentation"><%= link_to I18n.t("button.logout"), destroy_user_session_path, method: :delete %></li>
-              <% else %>
-                <li role="presentation"><%= link_to I18n.t("button.sign_in"), new_user_registration_path %></li>
-                <li role="presentation"><%= link_to I18n.t("button.login"), new_user_session_path %></li>
-              <% end %>
-            </ul>
-          </li>
-        </ul>
-        <% if user_signed_in? %>
-          <div class="navbar-text navbar-right">
-            <%= current_user.name %>
-          </div>
-        <% end %>
+      <%= link_to I18n.t("title.app"), root_path, class: "header_title"%>
+        <div class="navbar-text navbar-right">
+          <ul id="dropmenu">
+            <li><a href="#">通知</a>
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </li>
+            <li><a href="#">メニュー</a>
+          <ul>
+          <% if user_signed_in? %>
+            <li><%= link_to current_user.name, user_path(current_user.id) %></li>
+            <li><%= link_to I18n.t("button.logout"), destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to I18n.t("button.sign_in"), new_user_registration_path %></li>
+            <li><%= link_to I18n.t("button.login"), new_user_session_path %></li>
+          <% end %>
+    </ul>
+  </li>
+</ul>
+            
+            
+        </div>    
     </nav>
   </header>
   <body> 

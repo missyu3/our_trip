@@ -1,6 +1,7 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :plan_item
+  has_many :notifications, as: :event
   
   validates :content, presence: true
 
