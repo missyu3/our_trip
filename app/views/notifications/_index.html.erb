@@ -1,0 +1,5 @@
+<ul class="notifications_list">
+  <% notifications.each do |notification| %>
+    <li><%= link_to notification.notification_message, root_path %></li>
+  <% end %>
+</ul>

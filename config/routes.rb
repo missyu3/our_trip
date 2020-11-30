@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'notifications/index'
   get 'comments/create'
   root 'tops#show'
   resources :tops, only: [:show]
+  resources :participants, only: [:index, :create, :destroy]
+  resources :notifications, only: [:index, :update]
   resources :plans do
     resources :plan_items do
       resources :comments, only: [:index, :create]
     end
-    resources :participants, only: [:index, :create, :destroy]
     resources :schedules, only: [:index] do
       collection do
         patch :sort

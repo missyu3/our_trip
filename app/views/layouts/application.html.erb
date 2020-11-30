@@ -11,37 +11,21 @@
   <header>
     <nav class="nav">
       <%= link_to I18n.t("title.app"), root_path, class: "header_title"%>
-        <div class="navbar-text navbar-right">
-          <ul id="dropmenu">
-            <li><a href="#">通知</a>
-              <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+      <div class="navbar-text navbar-right">
+        <ul id="dropmenu">
+          <% if user_signed_in? %>
+            <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+            <li><%= link_to '通知', notifications_path, remote: true %>
+              <ul class="notifications_list">
               </ul>
             </li>
-            <li><a href="#">メニュー</a>
-          <ul>
-          <% if user_signed_in? %>
-            <li><%= link_to current_user.name, user_path(current_user.id) %></li>
             <li><%= link_to I18n.t("button.logout"), destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to I18n.t("button.sign_in"), new_user_registration_path %></li>
             <li><%= link_to I18n.t("button.login"), new_user_session_path %></li>
           <% end %>
-    </ul>
-  </li>
-</ul>
-            
-            
-        </div>    
+        </ul>
+      </div>    
     </nav>
   </header>
   <body> 
