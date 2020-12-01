@@ -15,8 +15,4 @@ class Notification < ApplicationRecord
     parent_model.notifications.build(data_list)
   end
 
-  def notification_message
-    message = self.create_item? ? "新しく作成" : "更新"
-    "#{self.notified.name}により計画の詳細情報が#{message}されました。"
-  end
 end

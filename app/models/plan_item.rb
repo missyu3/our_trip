@@ -19,4 +19,19 @@ class PlanItem < ApplicationRecord
 
   scope :order_by_updated_before, -> { order(updated_at: :desc) }
   scope :where_not_include_schedule, ->(schedule) { where.not(id: schedule.to_a.map { |item| item[:plan_item_id] }) }
+
+  def notification_params_hash
+    hash = {}
+    hash[:plan_id] = self.plan_id
+    hash[:plan_item_id] = self.id
+    hash
+  end
+
+  def notification_create_message()
+    "#{self.user.name}により計画の詳細情報が作成されました。"
+  end
+
+  def notification_update_message(editer_name)
+    "#{editer_name}により計画の詳細情報が更新されました。"
+  end
 end
