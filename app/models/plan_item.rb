@@ -4,7 +4,7 @@ class PlanItem < ApplicationRecord
   belongs_to :plan
   belongs_to :user
   has_many :comments, dependent: :destroy
-  has_many :notifications, as: :event
+  has_many :notifications, as: :event, dependent: :destroy
   has_one :schedule, dependent: :destroy
 
   enum category: { move: 1, activity: 2, meal: 3, lodging: 4 }
@@ -22,8 +22,8 @@ class PlanItem < ApplicationRecord
 
   def notification_params_hash
     hash = {}
-    hash[:plan_id] = self.plan_id
-    hash[:plan_item_id] = self.id
+    hash[:plan] = self.plan
+    hash[:plan_item] = self
     hash
   end
 

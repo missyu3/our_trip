@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     comment =  Comment.new(comment_params)
     comment.plan_item_id = @plan_item.id
     comment.user_id = current_user.id
+    comment.notifications.build_notifications(comment, comment.plan_item.plan_id ,current_user ,0)
     respond_to do |format|
       comment.save
       @comments = Comment.get_comments_for_plan_item(@plan_item.id).page(params[:page]).per(KAMINARI_PER)
