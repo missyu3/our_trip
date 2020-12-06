@@ -17,6 +17,7 @@ RSpec.describe Notification, type: :model do
       next unless c.class == Class && c < ActiveRecord::Base && !c.abstract_class?
       c.reflect_on_all_associations.map(&:name).include?(:notifications)
     end
+    
     models.each do |model|
       expect(model.method_defined?(:notification_params_hash)).to be true
       expect(model.method_defined?(:notification_create_message)).to be true
@@ -31,6 +32,5 @@ RSpec.describe Notification, type: :model do
 
     item.notifications.build_notifications(item, item.plan_id, user_test1, 0)
     expect{ item.save }.to change{ Notification.count }.by(2)
-
   end
 end
