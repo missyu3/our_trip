@@ -6,6 +6,8 @@ class Participant < ApplicationRecord
 
   attr_accessor :name
 
+  scope :where_participants_other_than_yourself, ->(plan_id,current_user) { where(plan_id: plan_id).where.not(user_id: current_user).includes(:user) }
+
   def self.check_and_create(plan_id, user_name)
     user = User.find_by(name: user_name)
     return '存在しないユーザーです' if user.blank?

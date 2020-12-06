@@ -11,6 +11,7 @@ class PlanItemsController < ApplicationController
 
   def create
     @plan_item = current_user.plan_items.new(plan_item_params)
+    @plan_item.notifications.build_notifications(@plan_item, @plan_item.plan_id ,current_user ,0)
     if @plan_item.save
       redirect_to plan_plan_items_path(plan_id: @plan_item.plan_id)
     else
@@ -21,6 +22,7 @@ class PlanItemsController < ApplicationController
   def edit; end
 
   def update
+    @plan_item.notifications.build_notifications(@plan_item, @plan_item.plan_id ,current_user ,1)
     if @plan_item.update(plan_item_params)
       redirect_to plan_plan_items_path(plan_id: @plan_item.plan_id)
     else

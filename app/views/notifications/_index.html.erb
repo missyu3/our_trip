@@ -1,0 +1,13 @@
+<ul class="notifications_list">
+  <% if notifications.blank? %>
+    <li><a href="#">通知はありません</a></li>
+  <% else %>
+    <% notifications.each do |notification| %>
+      <% if notification.create_item? %>
+        <li><%= link_to notification.event.notification_create_message, notification_path(id: notification.id), method: :put  %></li>
+      <% else %>
+        <li><%= link_to notification.event.notification_update_message(notification.notified.name), notification_path(id: notification.id), method: :put  %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
