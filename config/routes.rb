@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   get 'comments/create'
   root 'tops#show'
   resources :tops, only: [:show]
-  resources :participants, only: [:index, :create, :destroy]
   resources :notifications, only: [:index, :update]
   resources :plans do
     resources :plan_items do
       resources :comments, only: [:index, :create]
     end
+    resources :participants, only: [:index, :create, :destroy]
     resources :schedules, only: [:index] do
       collection do
         patch :sort

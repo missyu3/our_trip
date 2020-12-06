@@ -11,7 +11,7 @@ RSpec.describe Notification, type: :model do
   end
   it 'ポリモーフィック関連付けがされているモデルに必要なメソッドが定義されているか' do
     constants = Object.constants.map do |name|
-      Object.const_get(name)
+      name.to_s.constantize
     end
     models = constants.select do |c|
       next unless c.class == Class && c < ActiveRecord::Base && !c.abstract_class?
