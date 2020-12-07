@@ -19,7 +19,7 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            - v1-dependencies-      
+            - v1-dependencies-
       - run: mv ./config/database.ci.yml ./config/database.yml
       - run: mv ./spec/rails_helper.ci.rb ./spec/rails_helper.rb
       - run: gem install bundler:2.1.4
@@ -37,3 +37,27 @@ jobs:
       - run:
           name: Rspec
           command: bundle exec rspec
+
+  deploy:
+    docker:
+      - image: circleci/ruby:2.6.5-node-browsers-legacy
+    steps:
+      - checkout
+      - ruby/install-deps
+      - add_ssh_keys:
+          fingerprints: FINGERPRINTS
+      - deploy:
+          name: Capistrano deploy
+          command: bundle exec cap production deploy
+
+workflows:
+  version: 2
+  build_accept_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
